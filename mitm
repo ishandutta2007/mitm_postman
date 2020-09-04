@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# DIR="/Users/ishandutta2007/Documents/Projects/mitm_postman"
+HOST=${1}
+COLLECTION=${2}
+FILE=$DIR"/lib/postman.py"
+MYPOSTMANFILE=$DIR"/lib/mypostman.py"
+# echo $HOST
+# echo $COLLECTION
+# mitmdump --set host_filter=$HOST --set collection_name=$COLLECTION --ssl-insecure -s $FILE
+mitmdump --set host_filter=$HOST --set collection_name=$COLLECTION --ssl-insecure -s "$MYPOSTMANFILE"
+
