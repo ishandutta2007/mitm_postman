@@ -23,7 +23,7 @@ cd mitm_postman
 Run the command to start the proxy server and create the postman collection for the APIs calls from the client to a particular domain
 
 ```sh
-./mitm "www.google.com" "collection_google"
+./mitm www.facebook.com  fb
 ```
 
 Configure the proxy settings on the client (port 9500)
