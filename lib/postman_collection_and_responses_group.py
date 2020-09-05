@@ -13,29 +13,28 @@ from urllib.parse import urlencode
 
 from mitmproxy import ctx
 
-HOST_FILTER_PARAM = "host_filter"
+# HOST_FILTER_PARAM = "host_filter"
 COLLECTION_NAME_PARAM = "collection_name"
-
+HOSTGROUP_FILTER_PARAM = "hostgroup_filter"
 
 def load(l):
-    l.add_option(HOST_FILTER_PARAM, str, "example.com", "Host filter option")
-    l.add_option(
-        COLLECTION_NAME_PARAM, str, "collection_name", "Collection name option"
-    )
-
+    # l.add_option(HOST_FILTER_PARAM, str, "example.com", "Host filter option")
+    l.add_option(COLLECTION_NAME_PARAM, str, "collection_name", "Collection name option")
+    l.add_option(HOSTGROUP_FILTER_PARAM, str, "hostgroup_filter", "hostgroup filter option")
 
 class Postman:
     def __init__(self):
         self.num = 0
-        self.keywords = ["facebook", "fbcdn", "ip-api", "instagram"]
+        # self.keywords = ["facebook", "fbcdn", "ip-api", "instagram"]
         self.folder_dict = {}
 
     def request(self, flow):
+        print('hostgroup_filter', ctx.options.hostgroup_filter)
         self.num = self.num + 1
         self.collection = Collection.getInstance(request_no=self.num)
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
-        for keyword in self.keywords:
+        for keyword in ctx.options.hostgroup_filter.split(','):
             if keyword in flow.request.host:
                 is_present = True
                 break
@@ -43,7 +42,7 @@ class Postman:
             return
         ctx.log.info(
             "INITATING POSTMAN REQUEST CONSTRUCTION:%s , %s"
-            % (flow.request.host, ctx.options.host_filter)
+            % (flow.request.host, ctx.options.hostgroup_filter)
         )
         headers = {}
         for k, v in flow.request.headers.items():
@@ -115,7 +114,7 @@ class Postman:
     def response(self, flow):
         print("RESPONSE NO:", self.num)
         is_present = False
-        for keyword in self.keywords:
+        for keyword in ctx.options.hostgroup_filter.split(','):
             if keyword in flow.request.host:
                 is_present = True
                 break

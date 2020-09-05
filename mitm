@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-HOST=${1}
+# HOST=${1}
+HOSTGROUP='instagram,facebook,fbcdn,ip-api'
 COLLECTION=${2}
 POSTMAN_COLL_AND_RESPONSES_GR_FILE=$DIR"/lib/postman_collection_and_responses_group.py"
-mitmdump --set host_filter=$HOST --set collection_name=$COLLECTION --ssl-insecure -s "$POSTMAN_COLL_AND_RESPONSES_GR_FILE"
+# mitmdump --set host_filter=$HOST
+mitmdump --set collection_name=$COLLECTION --ssl-insecure -s $POSTMAN_COLL_AND_RESPONSES_GR_FILE --set hostgroup_filter=$HOSTGROUP
