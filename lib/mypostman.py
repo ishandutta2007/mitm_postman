@@ -104,7 +104,9 @@ class Postman:
             if self.folder_dict.get(folder_name):
                 folder = self.folder_dict.get(folder_name)
             else:
-                folder = Folder(name=folder_name, request_no=self.num, collection=self.collection)
+                folder = Folder(
+                    name=folder_name, request_no=self.num, collection=self.collection
+                )
                 self.collection.add_folder(folder)
                 self.folder_dict[folder_name] = folder
             folder.add_request(req)
@@ -224,7 +226,7 @@ class Collection(object):
             os.makedirs("output/" + self.name)
 
         filename = "{file_name}.json".format(**{"file_name": self.name})
-        with open("output/" + self.name + filename, "wt") as f:
+        with open("output/" + self.name + "/" + filename, "wt") as f:
             json.dump(obj, f, indent=4, ensure_ascii=False)
         print("save Collection to file:", self.name)
 
