@@ -246,7 +246,7 @@ class Collection(object):
         ]
         requests = self.get_all_requests()
         obj["requests"] = [r.serialize() for r in requests]
-        print("serialized Collection :", obj)
+        # print("serialized Collection :", obj)
         return obj
 
     def save_to_file(self):
@@ -367,40 +367,40 @@ class Response(object):
         self.name = name
         # self.response = response
 
-        content = response.content
-        print("response.content:", response.content)
+        self.content = response.content
+        # print("response.content:", self.content)
 
-        cookies = response.cookies
-        print("response.cookies:", response.cookies)
+        self.cookies = response.cookies
+        print("response.cookies:", self.cookies)
         # decode(strict=True)[source]
         # encode(e)[source]
         # get_content(strict: bool = True) → bytes[source]
         # get_text(strict: bool = True) → typing.Union[str, NoneType][source]
-        headers = response.headers
-        print("response.headers:", response.headers)
+        self.headers = response.headers
+        print("response.headers:", self.headers)
 
-        http_version = response.http_version
-        print("response.http_version:", response.http_version)
+        self.http_version = response.http_version
+        print("response.http_version:", self.http_version)
 
-        raw_content = response.raw_content
-        print("response.raw_content:", response.raw_content)
+        self.raw_content = response.raw_content
+        # print("response.raw_content:", self.raw_content)
 
-        reason = response.reason
-        print("response.reason:", response.reason)
+        self.reason = response.reason
+        print("response.reason:", self.reason)
         # refresh(now=None)[source]
         # replace(pattern, repl, flags=0, count=0)[source]
 
-        status_code = response.status_code
-        print("response.status_code:", response.status_code)
+        self.status_code = response.status_code
+        print("response.status_code:", self.status_code)
 
-        text = response.text
-        print("response.text:", response.text)
+        self.text = response.text
+        # print("response.text:", self.text)
 
-        timestamp_end = response.timestamp_end
-        print("response.timestamp_end:", response.timestamp_end)
+        self.timestamp_end = response.timestamp_end
+        print("response.timestamp_end:", self.timestamp_end)
 
-        timestamp_start = response.timestamp_start
-        print("response.timestamp_start:", response.timestamp_start)
+        self.timestamp_start = response.timestamp_start
+        print("response.timestamp_start:", self.timestamp_start)
 
     def serialize(self):
         """
@@ -413,12 +413,12 @@ class Response(object):
         obj["name"] = self.name
 
         try:
-            obj["content"] = self.content
+            obj["content"] = self.content.decode("unicode_escape")
         except Exception as e:
             obj["content"] = ""
 
         try:
-            obj["cookies"] = self.cookies
+            obj["cookies"] = list(self.cookies)
         except Exception as e:
             obj["cookies"] = []
 
@@ -434,7 +434,9 @@ class Response(object):
             obj["http_version"] = ""
 
         try:
-            obj["raw_content"] = json.dumps(self.raw_content, indent=4)
+            obj["raw_content"] = json.dumps(
+                self.raw_content.decode("unicode_escape"), indent=4
+            )
         except Exception as e:
             obj["raw_content"] = {}
 
@@ -449,7 +451,7 @@ class Response(object):
             obj["status_code"] = ""
 
         try:
-            obj["text"] = self.text
+            obj["text"] = self.text.decode("unicode_escape")
         except Exception as e:
             obj["text"] = ""
 
@@ -599,7 +601,7 @@ class CollectionOfResponses(object):
         # obj["order"] = [r.id for r in self.responses]
         responses = self.get_all_responses()
         obj["responses"] = [r.serialize() for r in responses]
-        print("serialized CollectionOfResponses :", obj)
+        # print("serialized CollectionOfResponses :", obj)
         return obj
 
     def save_to_file(self):
@@ -612,10 +614,18 @@ class CollectionOfResponses(object):
             os.makedirs("output/{}/CollectionOfResponses/".format(self.name))
 
         filename = "{file_name}.json".format(**{"file_name": self.name})
-        with open(
-            "output/{}/CollectionOfResponses/".format(self.name) + "/" + filename, "wt"
-        ) as f:
-            json.dump(obj, f, indent=4, ensure_ascii=False)
+        try:
+            with open(
+                "output/{}/CollectionOfResponses/".format(self.name) + "/" + filename,
+                "wt",
+            ) as f:
+                json.dump(obj, f, indent=4, ensure_ascii=False)
+        except Exception as e:
+            print("ERRRRRRRRRRRRRRR DUMPING RESPONSES")
+            print(e)
+            s = str(e)  # int(s[57:63])int(s[50:56])
+            l = int(s[50:56])
+            print(obj[l - 100 : l + 100])
         print("save CollectionOfResponses to file:", self.name)
 
 
