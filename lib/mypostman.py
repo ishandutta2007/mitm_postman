@@ -27,15 +27,15 @@ def load(l):
 class Postman:
     def __init__(self):
         self.num = 0
+        self.keywords = ["facebook", "fbcdn"]
         self.folder_dict = {}
 
     def request(self, flow):
         self.num = self.num + 1
         self.collection = Collection.getInstance(request_no=self.num)
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
-        keywords = ["facebook", "fbcdn"]
         is_present = False
-        for keyword in keywords:
+        for keyword in self.keywords:
             if keyword in flow.request.host:
                 is_present = True
                 break
@@ -83,9 +83,9 @@ class Postman:
             headers=headers,
             data=data,
             is_json=is_json,
+            request_no=self.num,
             description=None,
             parent=None,
-            request_no=self.num,
         )
         add_to_folder = False
         folder_name = ""
@@ -104,7 +104,7 @@ class Postman:
             if self.folder_dict.get(folder_name):
                 folder = self.folder_dict.get(folder_name)
             else:
-                folder = Folder(name=folder_name, collection=self.collection)
+                folder = Folder(name=folder_name, request_no=self.num, collection=self.collection)
                 self.collection.add_folder(folder)
                 self.folder_dict[folder_name] = folder
             folder.add_request(req)
@@ -220,11 +220,11 @@ class Collection(object):
         :return: None
         """
         obj = self.serialize()
-        if not os.path.exists(self.name):
-            os.makedirs(self.name)
+        if not os.path.exists("output/" + self.name):
+            os.makedirs("output/" + self.name)
 
         filename = "{file_name}.json".format(**{"file_name": self.name})
-        with open(self.name + "/" + filename, "wt") as f:
+        with open("output/" + self.name + filename, "wt") as f:
             json.dump(obj, f, indent=4, ensure_ascii=False)
         print("save Collection to file:", self.name)
 
@@ -238,9 +238,9 @@ class Request(object):
         headers=None,
         data=None,
         is_json=False,
+        request_no=None,
         description=None,
         parent=None,
-        request_no=None,
     ):
         """
         A Request object represents a single Postman Request
@@ -311,7 +311,7 @@ class Request(object):
 
 
 class Folder(object):
-    def __init__(self, name, collection=None):
+    def __init__(self, name, request_no, collection=None):
         """
         A Folder object represents a single Postman folder
         :param name: Name of the folder
@@ -319,7 +319,10 @@ class Folder(object):
         """
         print("FolderFolderFolderFolderFolderFolderFolder:")
         print(object)
-        self.id = str(uuid.uuid4())
+        if request_no:
+            self.id = str(request_no).zfill(4) + "_" + str(uuid.uuid4())
+        else:
+            self.id = str(uuid.uuid4())
         self.name = name
         self.order = []
         self._requests = []
