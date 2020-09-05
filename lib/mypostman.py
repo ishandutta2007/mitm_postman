@@ -139,11 +139,11 @@ class Postman:
         print("response.text:", response.text[:100])
         print("response.timestamp_end:", response.timestamp_end)
         print("response.timestamp_start:", response.timestamp_start)
-        self.collectionofresponses = CollectionOfResponses.getInstance(
+        self.group_of_responses = GroupOfResponses.getInstance(
             response_no=self.num
         )
-        self.collectionofresponses.add_response(response)
-        self.collectionofresponses.save_to_file()
+        self.group_of_responses.add_response(response)
+        self.group_of_responses.save_to_file()
 
     @staticmethod
     def get_path(req):
@@ -530,30 +530,30 @@ class Folder(object):
         return obj
 
 
-class CollectionOfResponses(object):
+class GroupOfResponses(object):
     __instance = None
 
     @staticmethod
     def getInstance(response_no):
         """ Static access method. """
         name = ctx.options.collection_name
-        if CollectionOfResponses.__instance == None:
-            CollectionOfResponses(
+        if GroupOfResponses.__instance == None:
+            GroupOfResponses(
                 name=ctx.options.collection_name, response_no=response_no
             )
-        return CollectionOfResponses.__instance
+        return GroupOfResponses.__instance
 
     def __init__(self, name, response_no, description=None):
         """
-        A CollectionOfResponses object represents a single postman collection
-        :param name: CollectionOfResponses name
-        :param description: Description for the CollectionOfResponses
+        A GroupOfResponses object represents a single postman collection
+        :param name: GroupOfResponses name
+        :param description: Description for the GroupOfResponses
         """
         # if Collection.__instance == None:
-        if CollectionOfResponses.__instance != None:
+        if GroupOfResponses.__instance != None:
             raise Exception("This class is a singleton!")
         else:
-            CollectionOfResponses.__instance = self
+            GroupOfResponses.__instance = self
             self.id = str(uuid.uuid4())
             self.response_no = response_no
             self.name = name
@@ -561,20 +561,20 @@ class CollectionOfResponses(object):
             self.description = description
             # print("INITITATLED Collection CLASS WITH NAME:", name)
 
-    # def get_CollectionOfResponses_id(self):
-    #     :return: CollectionOfResponses id
-    #     print("FETCHED CollectionOfResponses:", self.id)
+    # def get_GroupOfResponses_id(self):
+    #     :return: GroupOfResponses id
+    #     print("FETCHED GroupOfResponses:", self.id)
     #     return self.id
 
     def add_response(self, response):
         """
-        Add request to the CollectionOfResponses
+        Add request to the GroupOfResponses
         :param request: Request object
         :return: None
         """
         response = Response(self.name, response, response_no=self.response_no)
         self._responses.append(response)
-        print("ADDED CollectionOfResponses Response")
+        print("ADDED GroupOfResponses Response")
 
     def get_all_responses(self):
         """
@@ -582,16 +582,16 @@ class CollectionOfResponses(object):
         :return: list of Request objects
         """
         responses = list(self._responses)
-        print("Before CollectionOfResponses responses:", self._responses)
-        print("FETCHED CollectionOfResponses responses:", responses)
-        print("New CollectionOfResponses responses:", self._responses)
+        print("Before GroupOfResponses responses:", self._responses)
+        print("FETCHED GroupOfResponses responses:", responses)
+        print("New GroupOfResponses responses:", self._responses)
         # return responses#, key=attrgetter("id"))
         return sorted(responses, key=attrgetter("id"))
 
     def serialize(self):
         """
-        Serialize CollectionOfResponses object
-        :return: CollectionOfResponses dict
+        Serialize GroupOfResponses object
+        :return: GroupOfResponses dict
         """
         obj = OrderedDict()
         obj["id"] = self.id
@@ -601,22 +601,22 @@ class CollectionOfResponses(object):
         # obj["order"] = [r.id for r in self.responses]
         responses = self.get_all_responses()
         obj["responses"] = [r.serialize() for r in responses]
-        # print("serialized CollectionOfResponses :", obj)
+        # print("serialized GroupOfResponses :", obj)
         return obj
 
     def save_to_file(self):
         """
-        Save Postman CollectionOfResponses to file
+        Save Postman GroupOfResponses to file
         :return: None
         """
         obj = self.serialize()
-        if not os.path.exists("output/{}/CollectionOfResponses/".format(self.name)):
-            os.makedirs("output/{}/CollectionOfResponses/".format(self.name))
+        if not os.path.exists("output/{}/GroupOfResponses/".format(self.name)):
+            os.makedirs("output/{}/GroupOfResponses/".format(self.name))
 
         filename = "{file_name}.json".format(**{"file_name": self.name})
         try:
             with open(
-                "output/{}/CollectionOfResponses/".format(self.name) + "/" + filename,
+                "output/{}/GroupOfResponses/".format(self.name) + "/" + filename,
                 "wt",
             ) as f:
                 json.dump(obj, f, indent=4, ensure_ascii=False)
@@ -626,7 +626,7 @@ class CollectionOfResponses(object):
             s = str(e)  # int(s[57:63])int(s[50:56])
             l = int(s[50:56])
             print(obj[l - 100 : l + 100])
-        print("save CollectionOfResponses to file:", self.name)
+        print("save GroupOfResponses to file:", self.name)
 
 
 addons = [Postman()]
