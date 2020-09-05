@@ -2,5 +2,5 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 HOST=${1}
 COLLECTION=${2}
-MYPOSTMANFILE=$DIR"/lib/mypostman.py"
-mitmdump --set host_filter=$HOST --set collection_name=$COLLECTION --ssl-insecure -s "$MYPOSTMANFILE"
+POSTMAN_COLL_AND_RESPONSES_FILE=$DIR"/lib/postman_collection_and_responses.py"
+mitmdump --set host_filter=$HOST --set collection_name=$COLLECTION --ssl-insecure -s "$POSTMAN_COLL_AND_RESPONSES_FILE"
