@@ -10,6 +10,7 @@ from operator import attrgetter
 import uuid
 import argparse
 from urllib.parse import urlencode
+import re
 
 from mitmproxy import ctx
 
@@ -17,10 +18,16 @@ from mitmproxy import ctx
 COLLECTION_NAME_PARAM = "collection_name"
 HOSTGROUP_FILTER_PARAM = "hostgroup_filter"
 
+
 def load(l):
     # l.add_option(HOST_FILTER_PARAM, str, "example.com", "Host filter option")
-    l.add_option(COLLECTION_NAME_PARAM, str, "collection_name", "Collection name option")
-    l.add_option(HOSTGROUP_FILTER_PARAM, str, "hostgroup_filter", "hostgroup filter option")
+    l.add_option(
+        COLLECTION_NAME_PARAM, str, "collection_name", "Collection name option"
+    )
+    l.add_option(
+        HOSTGROUP_FILTER_PARAM, str, "hostgroup_filter", "hostgroup filter option"
+    )
+
 
 class Postman:
     def __init__(self):
@@ -29,12 +36,12 @@ class Postman:
         self.folder_dict = {}
 
     def request(self, flow):
-        print('hostgroup_filter', ctx.options.hostgroup_filter)
+        print("hostgroup_filter", ctx.options.hostgroup_filter)
         self.num = self.num + 1
         self.collection = Collection.getInstance(request_no=self.num)
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
-        for keyword in ctx.options.hostgroup_filter.split(','):
+        for keyword in ctx.options.hostgroup_filter.split(","):
             if keyword in flow.request.host:
                 is_present = True
                 break
@@ -114,7 +121,7 @@ class Postman:
     def response(self, flow):
         print("RESPONSE NO:", self.num)
         is_present = False
-        for keyword in ctx.options.hostgroup_filter.split(','):
+        for keyword in ctx.options.hostgroup_filter.split(","):
             if keyword in flow.request.host:
                 is_present = True
                 break
@@ -138,9 +145,7 @@ class Postman:
         print("response.text:", response.text[:100])
         print("response.timestamp_end:", response.timestamp_end)
         print("response.timestamp_start:", response.timestamp_start)
-        self.group_of_responses = GroupOfResponses.getInstance(
-            response_no=self.num
-        )
+        self.group_of_responses = GroupOfResponses.getInstance(response_no=self.num)
         self.group_of_responses.add_response(response)
         self.group_of_responses.save_to_file()
 
@@ -291,7 +296,7 @@ class Request(object):
         print("RequestRequestRequestRequestRequestRequestRequest:")
         print(object)
         if request_no:
-            self.id = str(request_no).zfill(4) + "_" + str(uuid.uuid4())
+            self.id = str(request_no).zfill(5) + "_" + str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
 
@@ -359,7 +364,7 @@ class Response(object):
         print("ResponseResponseResponseResponseResponseResponseRequest:")
         print(object)
         if response_no:
-            self.id = str(response_no).zfill(4) + "_" + str(uuid.uuid4())
+            self.id = str(response_no).zfill(5) + "_" + str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
 
@@ -493,7 +498,7 @@ class Folder(object):
         print("FolderFolderFolderFolderFolderFolderFolder:")
         print(object)
         if request_no:
-            self.id = str(request_no).zfill(4) + "_" + str(uuid.uuid4())
+            self.id = str(request_no).zfill(5) + "_" + str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
         self.name = name
@@ -537,9 +542,7 @@ class GroupOfResponses(object):
         """ Static access method. """
         name = ctx.options.collection_name
         if GroupOfResponses.__instance == None:
-            GroupOfResponses(
-                name=ctx.options.collection_name, response_no=response_no
-            )
+            GroupOfResponses(name=ctx.options.collection_name, response_no=response_no)
         return GroupOfResponses.__instance
 
     def __init__(self, name, response_no, description=None):
@@ -609,22 +612,22 @@ class GroupOfResponses(object):
         :return: None
         """
         obj = self.serialize()
-        if not os.path.exists("output/{}/GroupOfResponses/".format(self.name)):
-            os.makedirs("output/{}/GroupOfResponses/".format(self.name))
+        if not os.path.exists("output/{}/responses_groups/".format(self.name)):
+            os.makedirs("output/{}/responses_groups/".format(self.name))
 
         filename = "{file_name}.json".format(**{"file_name": self.name})
         try:
             with open(
-                "output/{}/GroupOfResponses/".format(self.name) + "/" + filename,
-                "wt",
+                "output/{}/responses_groups/".format(self.name) + "/" + filename, "wt",
             ) as f:
                 json.dump(obj, f, indent=4, ensure_ascii=False)
         except Exception as e:
             print("ERRRRRRRRRRRRRRR DUMPING RESPONSES")
             print(e)
             s = str(e)  # int(s[57:63])int(s[50:56])
-            l = int(s[50:56])
-            print(obj[l - 100 : l + 100])
+            nums = re.findall(r"\d+", s)
+            l = nums[1]  # int(s[50:56])
+            print(obj[l - 10 : l + 100])
         print("save GroupOfResponses to file:", self.name)
 
 
