@@ -32,7 +32,7 @@ def load(l):
 class Postman:
     def __init__(self):
         self.num = 0
-        # self.keywords = ["facebook", "fbcdn", "ip-api", "instagram"]
+        self.excludes = ['docs.google.com', 'play.google.com', 'ssl.gstatic.com']
         self.folder_dict = {}
 
     def request(self, flow):
@@ -41,6 +41,9 @@ class Postman:
         self.collection = Collection.getInstance(request_no=self.num)
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
+        for exclude in self.excludes:
+            if exclude in flow.request.host:
+                return
         for keyword in ctx.options.hostgroup_filter.split(","):
             if keyword in flow.request.host:
                 is_present = True
