@@ -40,7 +40,7 @@ class Postman:
         print("hostgroup_filter", ctx.options.hostgroup_filter)
         self.num = self.num + 1
         self.collection = Collection.getInstance(
-            request_no="before_" + str(self.num).zfill(5)
+            request_no=str(self.num).zfill(5) + "_before"
         )
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
@@ -95,7 +95,7 @@ class Postman:
             headers=headers,
             data=data,
             is_json=is_json,
-            request_no="before_" + str(self.num).zfill(5),
+            request_no=str(self.num).zfill(5) + "_before",
             description=None,
             parent=None,
         )
@@ -131,7 +131,7 @@ class Postman:
         # print("myresponse flow", flow.response)
         self.num = self.num + 1
         self.collection = Collection.getInstance(
-            request_no="after_" + str(afterrequest_no).zfill(5)
+            request_no=str(afterrequest_no).zfill(5) + "_after"
         )
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
@@ -186,7 +186,7 @@ class Postman:
             headers=headers,
             data=data,
             is_json=is_json,
-            request_no="after_" + str(self.num).zfill(5),
+            request_no=str(self.num).zfill(5) + "_after",
             description=None,
             parent=None,
         )
@@ -245,7 +245,7 @@ class Postman:
         # print("response.timestamp_end:", response.timestamp_end)
         # print("response.timestamp_start:", response.timestamp_start)
         self.group_of_responses = GroupOfResponses.getInstance(
-            response_no="after_" + str(afterrequest_no).zfill(5)
+            response_no=str(afterrequest_no).zfill(5) + "_after"
         )
         self.group_of_responses.add_response(response)
         self.group_of_responses.save_to_file()
