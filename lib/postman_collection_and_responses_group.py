@@ -52,43 +52,43 @@ class Postman:
             if keyword in flow.request.host:
                 is_present = True
                 break
-        if not is_present:
-            return
-        ctx.log.info(
-            "INITATING POSTMAN REQUEST CONSTRUCTION:%s , %s"
-            % (flow.request.host, ctx.options.hostgroup_filter)
-        )
-        headers = {}
-        for k, v in flow.request.headers.items():
-            if k != "Content-Length":
-                headers[k] = v
-        content = flow.request.content
-        if content:
-            content = content.decode("utf-8")
-        print(
-            "{url} ({method})".format(
-                **{"url": flow.request.url, "method": flow.request.method}
-            )
-        )
-        data = None
-        is_json = False
-        path = self.get_path(flow.request)
-        try:
-            content = json.loads(content)
-        except Exception:
-            pass
-        if flow.request.method in ["POST", "PUT"]:
-            data = content
-            if "form-urlencoded" in headers.get("Content-Type", ""):
-                try:
-                    data = {x.split("=")[0]: x.split("=")[1] for x in data.split("&")}
-                except Exception:
-                    pass
-            elif "json" in headers.get("Content-Type", ""):
-                is_json = True
+        # if not is_present:
+        return
+        # ctx.log.info(
+        #     "INITATING POSTMAN REQUEST CONSTRUCTION:%s , %s"
+        #     % (flow.request.host, ctx.options.hostgroup_filter)
+        # )
+        # headers = {}
+        # for k, v in flow.request.headers.items():
+        #     if k != "Content-Length":
+        #         headers[k] = v
+        # content = flow.request.content
+        # if content:
+        #     content = content.decode("utf-8")
+        # print(
+        #     "{url} ({method})".format(
+        #         **{"url": flow.request.url, "method": flow.request.method}
+        #     )
+        # )
+        # data = None
+        # is_json = False
+        # path = self.get_path(flow.request)
+        # try:
+        #     content = json.loads(content)
+        # except Exception:
+        #     pass
+        # if flow.request.method in ["POST", "PUT"]:
+        #     data = content
+        #     if "form-urlencoded" in headers.get("Content-Type", ""):
+        #         try:
+        #             data = {x.split("=")[0]: x.split("=")[1] for x in data.split("&")}
+        #         except Exception:
+        #             pass
+        #     elif "json" in headers.get("Content-Type", ""):
+        #         is_json = True
 
-        print("REQUEST DATA:")
-        print(data)
+        # print("REQUEST DATA:")
+        # print(data)
         # req = Request(
         #     name=path,
         #     url=flow.request.url,
@@ -133,7 +133,6 @@ class Postman:
         self.collection = Collection.getInstance(
             request_no=str(self.num_res).zfill(5) + "_after"
         )
-        ctx.log.info("AFTER REQUEST NO: %d : %s" % (self.num_res, flow.request.host))
         is_present = False
         for exclude in self.excludes:
             if exclude in flow.request.host:
@@ -144,10 +143,8 @@ class Postman:
                 break
         if not is_present:
             return
-        ctx.log.info(
-            "INITATING POSTMAN REQUEST CONSTRUCTION:%s , %s"
-            % (flow.request.host, ctx.options.hostgroup_filter)
-        )
+
+        ctx.log.info("AFTER REQUEST NO: %d : %s" % (self.num_res, flow.request.host))
         headers = {}
         for k, v in flow.request.headers.items():
             if k != "Content-Length":
@@ -177,8 +174,8 @@ class Postman:
             elif "json" in headers.get("Content-Type", ""):
                 is_json = True
 
-        print("REQUEST DATA:")
-        print(data)
+        # print("REQUEST DATA:")
+        # print(data)
         req = Request(
             name=path,
             url=flow.request.url,
@@ -217,14 +214,14 @@ class Postman:
             folder.add_request(req)
         self.collection.save_to_file()
 
-        print("RESPONSE NO:", self.num_res)
-        is_present = False
-        for keyword in ctx.options.hostgroup_filter.split(","):
-            if keyword in flow.request.host:
-                is_present = True
-                break
-        if not is_present:
-            return
+        ctx.log.info("RESPONSE NO: %d : %s" % (self.num_res, flow.request.host))
+        # is_present = False
+        # for keyword in ctx.options.hostgroup_filter.split(","):
+        #     if keyword in flow.request.host:
+        #         is_present = True
+        #         break
+        # if not is_present:
+        #     return
         # print(flow.response)
         response = flow.response
         # print("response.content:", response.content[:100])
@@ -246,7 +243,9 @@ class Postman:
         self.group_of_responses = GroupOfResponses.getInstance(
             response_no=str(self.num_res).zfill(5) + "_after"
         )
-        self.group_of_responses.add_response(response)
+        self.group_of_responses.add_response(
+            response, response_no=str(self.num_res).zfill(5) + "_after"
+        )
         self.group_of_responses.save_to_file()
 
     @staticmethod
@@ -296,7 +295,7 @@ class Collection(object):
         """
         :return: collection id
         """
-        print("FETCHED Collection:", self.id)
+        # print("FETCHED Collection:", self.id)
         return self.id
 
     def add_request(self, request):
@@ -367,7 +366,7 @@ class Collection(object):
             "output/{}/postman_collections/".format(self.name) + "/" + filename, "wt"
         ) as f:
             json.dump(obj, f, indent=4, ensure_ascii=False)
-        print("save Collection to file:", self.name)
+        # print("save Collection to file:", self.name)
 
 
 class Request(object):
@@ -393,8 +392,8 @@ class Request(object):
         :param is_json: Whether data is a json
         :param description: Description for the request
         """
-        print("RequestRequestRequestRequestRequestRequestRequest:")
-        print(object)
+        # print("RequestRequestRequestRequestRequestRequestRequest:")
+        # print(object)
         if request_no:
             self.id = request_no + "_" + str(uuid.uuid4())
         else:
@@ -461,8 +460,8 @@ class Response(object):
         :param response: URL to send the response
         :param response_no: HTTP method
         """
-        print("ResponseResponseResponseResponseResponseResponseRequest:")
-        print(object)
+        # print("ResponseResponseResponseResponseResponseResponseRequest:")
+        # print(object)
         if response_no:
             self.id = response_no + "_" + str(uuid.uuid4())
         else:
@@ -476,7 +475,7 @@ class Response(object):
             self.content = self.content.decode("utf-8")
         except Exception as e:
             print(e)
-        print("response.content:", self.content)
+        # print("response.content:", self.content)
 
         self.cookies = response.cookies
         # print("response.cookies:", self.cookies)
@@ -495,7 +494,7 @@ class Response(object):
             self.content = self.raw_content.decode("utf-8")
         except Exception as e:
             print(e)
-        print("response.raw_content:", self.raw_content)
+        # print("response.raw_content:", self.raw_content)
 
         self.reason = response.reason
         # print("response.reason:", self.reason)
@@ -506,7 +505,7 @@ class Response(object):
         # print("response.status_code:", self.status_code)
 
         self.text = response.text
-        print("response.text:", self.text)
+        # print("response.text:", self.text)
 
         self.timestamp_end = response.timestamp_end
         # print("response.timestamp_end:", self.timestamp_end)
@@ -603,8 +602,8 @@ class Folder(object):
         :param name: Name of the folder
         :param collection: Collection object (collection to which the folder belongs)
         """
-        print("FolderFolderFolderFolderFolderFolderFolder:")
-        print(object)
+        # print("FolderFolderFolderFolderFolderFolderFolder:")
+        # print(object)
         if request_no:
             self.id = str(request_no).zfill(5) + "_" + str(uuid.uuid4())
         else:
@@ -676,13 +675,13 @@ class GroupOfResponses(object):
     #     print("FETCHED GroupOfResponses:", self.id)
     #     return self.id
 
-    def add_response(self, response):
+    def add_response(self, response, response_no):
         """
         Add request to the GroupOfResponses
         :param request: Request object
         :return: None
         """
-        response = Response(self.name, response, response_no=self.response_no)
+        response = Response(self.name, response, response_no=response_no)
         self._responses.append(response)
         # print("ADDED GroupOfResponses Response")
 
@@ -741,7 +740,7 @@ class GroupOfResponses(object):
             except Exception as e:
                 print(str(sobj[l : l + 1000]))
             # pp.pprint(obj)
-        print("save GroupOfResponses to file:", self.name)
+        # print("save GroupOfResponses to file:", self.name)
 
 
 addons = [Postman()]
