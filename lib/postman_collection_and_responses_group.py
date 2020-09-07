@@ -41,7 +41,7 @@ class Postman:
         print("hostgroup_filter", ctx.options.hostgroup_filter)
         self.num_req = self.num_req + 1
         self.collection = Collection.getInstance(
-            request_no=str(self.num).zfill(5) + "_before"
+            request_no=str(self.num_req).zfill(5) + "_before"
         )
         ctx.log.info("REQUEST NO: %d : %s" % (self.num_req, flow.request.host))
         is_present = False
@@ -131,7 +131,7 @@ class Postman:
         # print("afterrequest flow", flow.request)
         # print("myresponse flow", flow.response)
         self.collection = Collection.getInstance(
-            request_no=str(afterrequest_no).zfill(5) + "_after"
+            request_no=str(self.num_res).zfill(5) + "_after"
         )
         ctx.log.info("AFTER REQUEST NO: %d : %s" % (self.num_res, flow.request.host))
         is_present = False
@@ -244,9 +244,9 @@ class Postman:
         # print("response.timestamp_end:", response.timestamp_end)
         # print("response.timestamp_start:", response.timestamp_start)
         self.group_of_responses = GroupOfResponses.getInstance(
-            response_no=str(afterrequest_no).zfill(5) + "_after"
+            response_no=str(self.num_res).zfill(5) + "_after"
         )
-        self.group_of_responses.add_response(response, self.num_res)
+        self.group_of_responses.add_response(response)
         self.group_of_responses.save_to_file()
 
     @staticmethod
