@@ -228,22 +228,22 @@ class Postman:
             return
         # print(flow.response)
         response = flow.response
-        print("response.content:", response.content[:100])
-        print("response.cookies:", response.cookies)
+        # print("response.content:", response.content[:100])
+        # print("response.cookies:", response.cookies)
         # decode(strict=True)[source]
         # encode(e)[source]
         # get_content(strict: bool = True) → bytes[source]
         # get_text(strict: bool = True) → typing.Union[str, NoneType][source]
-        print("response.headers:", response.headers)
-        print("response.http_version:", response.http_version)
-        print("response.raw_content:", response.raw_content[:100])
-        print("response.reason:", response.reason)
+        # print("response.headers:", response.headers)
+        # print("response.http_version:", response.http_version)
+        # print("response.raw_content:", response.raw_content[:100])
+        # print("response.reason:", response.reason)
         # refresh(now=None)[source]
         # replace(pattern, repl, flags=0, count=0)[source]
-        print("response.status_code:", response.status_code)
-        print("response.text:", response.text[:100])
-        print("response.timestamp_end:", response.timestamp_end)
-        print("response.timestamp_start:", response.timestamp_start)
+        # print("response.status_code:", response.status_code)
+        # print("response.text:", response.text[:100])
+        # print("response.timestamp_end:", response.timestamp_end)
+        # print("response.timestamp_start:", response.timestamp_start)
         self.group_of_responses = GroupOfResponses.getInstance(
             response_no="after_" + str(afterrequest_no).zfill(5)
         )
@@ -308,7 +308,7 @@ class Collection(object):
         """
         request._parent = self
         self._requests.append(request)
-        print("ADDED Collection Request")
+        # print("ADDED Collection Request")
 
     def add_folder(self, folder):
         """
@@ -316,11 +316,11 @@ class Collection(object):
         :param folder: Folder object
         :return: None
         """
-        print("Existing Folders", self._folders)
-        print("ADDED Folder", folder)
+        # print("Existing Folders", self._folders)
+        # print("ADDED Folder", folder)
         self._folders.append(folder)
         folder._collection = self
-        print("Now Folders", self._folders)
+        # print("Now Folders", self._folders)
 
     def get_all_requests(self):
         """
@@ -328,11 +328,11 @@ class Collection(object):
         :return: list of Request objects
         """
         requests = list(self._requests)
-        print("Before Collection requests:", self._requests)
-        print("FETCHED Collection requests:", requests)
+        # print("Before Collection requests:", self._requests)
+        # print("FETCHED Collection requests:", requests)
         for f in self._folders:
             requests.extend(f._requests)
-        print("New Collection requests:", self._requests)
+        # print("New Collection requests:", self._requests)
         return sorted(requests, key=attrgetter("id"))
 
     def serialize(self):
@@ -472,40 +472,40 @@ class Response(object):
         self.name = name
         # self.response = response
 
-        self.content = response.content
-        # print("response.content:", self.content)
+        self.content = response.content.decode("utf-8")
+        print("response.content:", self.content)
 
         self.cookies = response.cookies
-        print("response.cookies:", self.cookies)
+        # print("response.cookies:", self.cookies)
         # decode(strict=True)[source]
         # encode(e)[source]
         # get_content(strict: bool = True) → bytes[source]
         # get_text(strict: bool = True) → typing.Union[str, NoneType][source]
         self.headers = response.headers
-        print("response.headers:", self.headers)
+        # print("response.headers:", self.headers)
 
         self.http_version = response.http_version
-        print("response.http_version:", self.http_version)
+        # print("response.http_version:", self.http_version)
 
-        self.raw_content = response.raw_content
-        # print("response.raw_content:", self.raw_content)
+        self.raw_content = response.raw_content  # .decode('utf-8')
+        print("response.raw_content:", self.raw_content)
 
         self.reason = response.reason
-        print("response.reason:", self.reason)
+        # print("response.reason:", self.reason)
         # refresh(now=None)[source]
         # replace(pattern, repl, flags=0, count=0)[source]
 
         self.status_code = response.status_code
-        print("response.status_code:", self.status_code)
+        # print("response.status_code:", self.status_code)
 
         self.text = response.text
-        # print("response.text:", self.text)
+        print("response.text:", self.text)
 
         self.timestamp_end = response.timestamp_end
-        print("response.timestamp_end:", self.timestamp_end)
+        # print("response.timestamp_end:", self.timestamp_end)
 
         self.timestamp_start = response.timestamp_start
-        print("response.timestamp_start:", self.timestamp_start)
+        # print("response.timestamp_start:", self.timestamp_start)
 
     def serialize(self):
         """
@@ -677,7 +677,7 @@ class GroupOfResponses(object):
         """
         response = Response(self.name, response, response_no=self.response_no)
         self._responses.append(response)
-        print("ADDED GroupOfResponses Response")
+        # print("ADDED GroupOfResponses Response")
 
     def get_all_responses(self):
         """
@@ -685,9 +685,9 @@ class GroupOfResponses(object):
         :return: list of Request objects
         """
         responses = list(self._responses)
-        print("Before GroupOfResponses responses:", self._responses)
-        print("FETCHED GroupOfResponses responses:", responses)
-        print("New GroupOfResponses responses:", self._responses)
+        # print("Before GroupOfResponses responses:", self._responses)
+        # print("FETCHED GroupOfResponses responses:", responses)
+        # print("New GroupOfResponses responses:", self._responses)
         # return responses#, key=attrgetter("id"))
         return sorted(responses, key=attrgetter("id"))
 
