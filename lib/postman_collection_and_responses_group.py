@@ -32,17 +32,18 @@ def load(l):
 
 class Postman:
     def __init__(self):
-        self.num = 0
+        self.num_req = 0
+        self.num_res = 0
         self.excludes = ["docs.google.com", "play.google.com", "ssl.gstatic.com"]
         self.folder_dict = {}
 
     def request(self, flow):
         print("hostgroup_filter", ctx.options.hostgroup_filter)
-        self.num = self.num + 1
+        self.num_req = self.num_req + 1
         self.collection = Collection.getInstance(
             request_no=str(self.num).zfill(5) + "_before"
         )
-        ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
+        ctx.log.info("REQUEST NO: %d : %s" % (self.num_req, flow.request.host))
         is_present = False
         for exclude in self.excludes:
             if exclude in flow.request.host:
@@ -88,52 +89,51 @@ class Postman:
 
         print("REQUEST DATA:")
         print(data)
-        req = Request(
-            name=path,
-            url=flow.request.url,
-            method=flow.request.method,
-            headers=headers,
-            data=data,
-            is_json=is_json,
-            request_no=str(self.num).zfill(5) + "_before",
-            description=None,
-            parent=None,
-        )
-        add_to_folder = False
-        folder_name = ""
-        if path and path != "/":
-            if path[0] == "/":
-                path = list(path)
-                path[0] = ""
-                path = "".join(path)
-            sub_path = path.split("/")
-            if len(sub_path) > 1:
-                add_to_folder = True
-                folder_name = sub_path[0]
-        if not add_to_folder:
-            self.collection.add_request(req)
-        else:
-            if self.folder_dict.get(folder_name):
-                folder = self.folder_dict.get(folder_name)
-            else:
-                folder = Folder(
-                    name=folder_name, request_no=self.num, collection=self.collection
-                )
-                self.collection.add_folder(folder)
-                self.folder_dict[folder_name] = folder
-            folder.add_request(req)
-        self.collection.save_to_file()
+        # req = Request(
+        #     name=path,
+        #     url=flow.request.url,
+        #     method=flow.request.method,
+        #     headers=headers,
+        #     data=data,
+        #     is_json=is_json,
+        #     request_no=str(self.num_req).zfill(5) + "_before",
+        #     description=None,
+        #     parent=None,
+        # )
+        # add_to_folder = False
+        # folder_name = ""
+        # if path and path != "/":
+        #     if path[0] == "/":
+        #         path = list(path)
+        #         path[0] = ""
+        #         path = "".join(path)
+        #     sub_path = path.split("/")
+        #     if len(sub_path) > 1:
+        #         add_to_folder = True
+        #         folder_name = sub_path[0]
+        # # if not add_to_folder:
+        # #     self.collection.add_request(req)
+        # else:
+        #     if self.folder_dict.get(folder_name):
+        #         folder = self.folder_dict.get(folder_name)
+        #     else:
+        #         folder = Folder(
+        #             name=folder_name, request_no=self.num_req, collection=self.collection
+        #         )
+        #         self.collection.add_folder(folder)
+        #         self.folder_dict[folder_name] = folder
+        #     # folder.add_request(req)
+        # # self.collection.save_to_file()
 
-    def afterrequest(self, flow):
-        afterrequest_no = self.num
+    def response(self, flow):
+        self.num_res = self.num_res + 1
         print("afterrequest hostgroup_filter", ctx.options.hostgroup_filter)
         # print("afterrequest flow", flow.request)
         # print("myresponse flow", flow.response)
-        self.num = self.num + 1
         self.collection = Collection.getInstance(
             request_no=str(afterrequest_no).zfill(5) + "_after"
         )
-        ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
+        ctx.log.info("AFTER REQUEST NO: %d : %s" % (self.num_res, flow.request.host))
         is_present = False
         for exclude in self.excludes:
             if exclude in flow.request.host:
@@ -186,7 +186,7 @@ class Postman:
             headers=headers,
             data=data,
             is_json=is_json,
-            request_no=str(self.num).zfill(5) + "_after",
+            request_no=str(self.num_res).zfill(5) + "_after",
             description=None,
             parent=None,
         )
@@ -208,17 +208,16 @@ class Postman:
                 folder = self.folder_dict.get(folder_name)
             else:
                 folder = Folder(
-                    name=folder_name, request_no=self.num, collection=self.collection
+                    name=folder_name,
+                    request_no=self.num_res,
+                    collection=self.collection,
                 )
                 self.collection.add_folder(folder)
                 self.folder_dict[folder_name] = folder
             folder.add_request(req)
         self.collection.save_to_file()
-        return afterrequest_no
 
-    def response(self, flow):
-        afterrequest_no = self.afterrequest(flow)
-        print("RESPONSE NO:", self.num)
+        print("RESPONSE NO:", self.num_res)
         is_present = False
         for keyword in ctx.options.hostgroup_filter.split(","):
             if keyword in flow.request.host:
@@ -247,7 +246,7 @@ class Postman:
         self.group_of_responses = GroupOfResponses.getInstance(
             response_no=str(afterrequest_no).zfill(5) + "_after"
         )
-        self.group_of_responses.add_response(response)
+        self.group_of_responses.add_response(response, self.num_res)
         self.group_of_responses.save_to_file()
 
     @staticmethod
@@ -472,7 +471,11 @@ class Response(object):
         self.name = name
         # self.response = response
 
-        self.content = response.content.decode("utf-8")
+        self.content = response.content
+        try:
+            self.content = self.content.decode("utf-8")
+        except Exception as e:
+            print(e)
         print("response.content:", self.content)
 
         self.cookies = response.cookies
@@ -487,7 +490,11 @@ class Response(object):
         self.http_version = response.http_version
         # print("response.http_version:", self.http_version)
 
-        self.raw_content = response.raw_content  # .decode('utf-8')
+        self.raw_content = response.raw_content
+        try:
+            self.content = self.raw_content.decode("utf-8")
+        except Exception as e:
+            print(e)
         print("response.raw_content:", self.raw_content)
 
         self.reason = response.reason
@@ -652,7 +659,7 @@ class GroupOfResponses(object):
         :param name: GroupOfResponses name
         :param description: Description for the GroupOfResponses
         """
-        # if Collection.__instance == None:
+        # if GroupOfResponses.__instance == None:
         if GroupOfResponses.__instance != None:
             raise Exception("This class is a singleton!")
         else:
@@ -662,7 +669,7 @@ class GroupOfResponses(object):
             self.name = name
             self._responses = []
             self.description = description
-            # print("INITITATLED Collection CLASS WITH NAME:", name)
+            # print("INITITATLED GroupOfResponses CLASS WITH NAME:", name)
 
     # def get_GroupOfResponses_id(self):
     #     :return: GroupOfResponses id
