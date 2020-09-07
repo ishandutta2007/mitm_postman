@@ -11,6 +11,7 @@ import uuid
 import argparse
 from urllib.parse import urlencode
 import re
+import pprint as pp
 
 from mitmproxy import ctx
 
@@ -32,13 +33,15 @@ def load(l):
 class Postman:
     def __init__(self):
         self.num = 0
-        self.excludes = ['docs.google.com', 'play.google.com', 'ssl.gstatic.com']
+        self.excludes = ["docs.google.com", "play.google.com", "ssl.gstatic.com"]
         self.folder_dict = {}
 
     def request(self, flow):
         print("hostgroup_filter", ctx.options.hostgroup_filter)
         self.num = self.num + 1
-        self.collection = Collection.getInstance(request_no=self.num)
+        self.collection = Collection.getInstance(
+            request_no="before_" + str(self.num).zfill(5)
+        )
         ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
         is_present = False
         for exclude in self.excludes:
@@ -92,7 +95,7 @@ class Postman:
             headers=headers,
             data=data,
             is_json=is_json,
-            request_no=self.num,
+            request_no="before_" + str(self.num).zfill(5),
             description=None,
             parent=None,
         )
@@ -121,7 +124,100 @@ class Postman:
             folder.add_request(req)
         self.collection.save_to_file()
 
+    def afterrequest(self, flow):
+        afterrequest_no = self.num
+        print("afterrequest hostgroup_filter", ctx.options.hostgroup_filter)
+        # print("afterrequest flow", flow.request)
+        # print("myresponse flow", flow.response)
+        self.num = self.num + 1
+        self.collection = Collection.getInstance(
+            request_no="after_" + str(afterrequest_no).zfill(5)
+        )
+        ctx.log.info("REQUEST NO: %d : %s" % (self.num, flow.request.host))
+        is_present = False
+        for exclude in self.excludes:
+            if exclude in flow.request.host:
+                return
+        for keyword in ctx.options.hostgroup_filter.split(","):
+            if keyword in flow.request.host:
+                is_present = True
+                break
+        if not is_present:
+            return
+        ctx.log.info(
+            "INITATING POSTMAN REQUEST CONSTRUCTION:%s , %s"
+            % (flow.request.host, ctx.options.hostgroup_filter)
+        )
+        headers = {}
+        for k, v in flow.request.headers.items():
+            if k != "Content-Length":
+                headers[k] = v
+        content = flow.request.content
+        if content:
+            content = content.decode("utf-8")
+        print(
+            "{url} ({method})".format(
+                **{"url": flow.request.url, "method": flow.request.method}
+            )
+        )
+        data = None
+        is_json = False
+        path = self.get_path(flow.request)
+        try:
+            content = json.loads(content)
+        except Exception:
+            pass
+        if flow.request.method in ["POST", "PUT"]:
+            data = content
+            if "form-urlencoded" in headers.get("Content-Type", ""):
+                try:
+                    data = {x.split("=")[0]: x.split("=")[1] for x in data.split("&")}
+                except Exception:
+                    pass
+            elif "json" in headers.get("Content-Type", ""):
+                is_json = True
+
+        print("REQUEST DATA:")
+        print(data)
+        req = Request(
+            name=path,
+            url=flow.request.url,
+            method=flow.request.method,
+            headers=headers,
+            data=data,
+            is_json=is_json,
+            request_no="after_" + str(self.num).zfill(5),
+            description=None,
+            parent=None,
+        )
+        add_to_folder = False
+        folder_name = ""
+        if path and path != "/":
+            if path[0] == "/":
+                path = list(path)
+                path[0] = ""
+                path = "".join(path)
+            sub_path = path.split("/")
+            if len(sub_path) > 1:
+                add_to_folder = True
+                folder_name = sub_path[0]
+        if not add_to_folder:
+            self.collection.add_request(req)
+        else:
+            if self.folder_dict.get(folder_name):
+                folder = self.folder_dict.get(folder_name)
+            else:
+                folder = Folder(
+                    name=folder_name, request_no=self.num, collection=self.collection
+                )
+                self.collection.add_folder(folder)
+                self.folder_dict[folder_name] = folder
+            folder.add_request(req)
+        self.collection.save_to_file()
+        return afterrequest_no
+
     def response(self, flow):
+        afterrequest_no = self.afterrequest(flow)
         print("RESPONSE NO:", self.num)
         is_present = False
         for keyword in ctx.options.hostgroup_filter.split(","):
@@ -148,7 +244,9 @@ class Postman:
         print("response.text:", response.text[:100])
         print("response.timestamp_end:", response.timestamp_end)
         print("response.timestamp_start:", response.timestamp_start)
-        self.group_of_responses = GroupOfResponses.getInstance(response_no=self.num)
+        self.group_of_responses = GroupOfResponses.getInstance(
+            response_no="after_" + str(afterrequest_no).zfill(5)
+        )
         self.group_of_responses.add_response(response)
         self.group_of_responses.save_to_file()
 
@@ -299,7 +397,7 @@ class Request(object):
         print("RequestRequestRequestRequestRequestRequestRequest:")
         print(object)
         if request_no:
-            self.id = str(request_no).zfill(5) + "_" + str(uuid.uuid4())
+            self.id = request_no + "_" + str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
 
@@ -367,7 +465,7 @@ class Response(object):
         print("ResponseResponseResponseResponseResponseResponseRequest:")
         print(object)
         if response_no:
-            self.id = str(response_no).zfill(5) + "_" + str(uuid.uuid4())
+            self.id = response_no + "_" + str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
 
@@ -623,14 +721,19 @@ class GroupOfResponses(object):
             with open(
                 "output/{}/responses_groups/".format(self.name) + "/" + filename, "wt",
             ) as f:
-                json.dump(obj, f, indent=4, ensure_ascii=False)
+                json.dump(obj, f, indent=4, ensure_ascii=False)  # .encode('utf8')
         except Exception as e:
             print("ERRRRRRRRRRRRRRR DUMPING RESPONSES")
             print(e)
             s = str(e)  # int(s[57:63])int(s[50:56])
             nums = re.findall(r"\d+", s)
-            l = nums[1]  # int(s[50:56])
-            print(obj[l - 10 : l + 100])
+            l = int(nums[1])  # int(s[50:56])
+            sobj = "&".join(["{}={}".format(k, v) for k, v in obj.items()])
+            try:
+                print(str(sobj[l - 10 : l + 1000]))
+            except Exception as e:
+                print(str(sobj[l : l + 1000]))
+            # pp.pprint(obj)
         print("save GroupOfResponses to file:", self.name)
 
 
