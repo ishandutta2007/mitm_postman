@@ -3,27 +3,40 @@ import requests
 my_encoding = "gzip, deflate, br"
 my_language = "en-GB,en-US;q=0.9,en;q=0.8"
 my_useragent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3882.0 Safari/537.36"
-cfduid_str = "__cfduid=dea031463893bc43ff99146214b8fa4dc1600757097" + ";" + " "
-buffer_marketing_str = (
-    "buffer-marketing=eyJ2aXNpdG9ySWQiOiJiZTAwNmE0Zi1jZTk0LTQ5ODMtYmMyOS1mMDBlMGI1MDQyMzgiLCJ0cmFja2luZyI6eyJyZWZlcnJlciI6Im5vbmUifSwidXRtcyI6eyJ2YWx1ZXMiOnt9LCJ1cGRhdGVkQXQiOjE2MDA3NTcwOTg2Mzh9fQ=="
-    + ";"
-    + " "
-)
-buffer_marketingsig_str = "buffer-marketing.sig=11OChn2sOFLbPZPYS5d3wHADIEQ" + ";" + " "
+cfduid_str = "__cfduid=dea031463893bc43ff99146214b8fa4dc1600757097"
+buffer_marketing_str = "buffer-marketing=eyJ2aXNpdG9ySWQiOiJiZTAwNmE0Zi1jZTk0LTQ5ODMtYmMyOS1mMDBlMGI1MDQyMzgiLCJ0cmFja2luZyI6eyJyZWZlcnJlciI6Im5vbmUifSwidXRtcyI6eyJ2YWx1ZXMiOnt9LCJ1cGRhdGVkQXQiOjE2MDA3NTcwOTg2Mzh9fQ=="
+buffer_marketingsig_str = "buffer-marketing.sig=11OChn2sOFLbPZPYS5d3wHADIEQ"
 buffer_signup_str = "buffer-signup=eyJ2aXNpdG9ySWQiOiJiZTAwNmE0Zi1jZTk0LTQ5ODMtYmMyOS1mMDBlMGI1MDQyMzgifQ=="
 ajs_anonymous_id = "ajs_anonymous_id=%22be52f79b-f4dc-4c96-9615-a43ef4ac1600%22"
 mp_90f7 = "mp_90f73cfa0608e74231d66fdf4f31e120_mixpanel=%7B%22"
 device_id = "device_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22"
 mp_lib = "mp_lib%22%3A%20%22Segment%3A%20web%22%2C%22%24"
-initial_referring_domain = "initial_referring_domain%22%3A%20%22%24direct%22%7D"
+initial_referring_domain = "initial_referring_domain%22%3A%20%22%24direct%22%" + "7D"
 fbp = "_fbp=fb.1.1600757110432.775138595"
 buffer_session = "buffer_session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJ2MV81ZDQxMzI1NGJkZDlhYTI2Zjc0NDg2Y2NfMjkxZGRmYjgtOWJhZS00OTliLThlZmYtYmY0M2E3MjAyMTQ3Iiwic2Vzc2lvblZlcnNpb24iOiJ2MSIsImlhdCI6MTYwMDc1NzExNn0.nTUgi-aGm6R-r9XBfYI-H8LUPNn5z-DtkVc6SV39788"
 bufferapp_ci_session = "bufferapp_ci_session=b9I9s49vV2QX5x3xuwkYxI4il2d4pBD1NgIn9zdmKKz3BnBB%2Bu8UHcgT30FlOZ%2Fkz38JxjuFDWBmnelw10njM9Ct8iUNv9mXxDtwe1XK1Cnwv8z2BQNgFWLhoPMe1dVYbj4h3VlKXzVQkmVCK%2F34rTyT27oenXPBAEnAd1jV6XeSLCAB4uLYphpkcBqTvOEASSBUKh9Z%2BQ%2FRD5LZ9qAkFwYzeQFVha4iqhwCmbF6wmDBwYHCx6CMeLptrhP62vMZxa2WZ7TKEJ8CTrUN1x5R7baLfTkEDv8mT4k%2FdWX9KxAtMOY2C%2BrDhoWXnjJSGjwNTgFyRCxHYRtEFgH7IapclPgsstwWpk3WAhc06TIYpNT1eCHfC3RWDl4vsFqGvKa5vF7GJmU%2BkNfFqglEDxeopiGhooOoj%2BZzSY2VUcb4ex1tRvdZETGGkOix1eY4RFgpLDUhYaY8WxO%2BYvyubP6GSBNoqICAOCUJktBq2S7DGcJZ4x7j%2FSjICXqbI%2Be%2B%2Fc3mOnghGFek7AXlzckFEw4wwEJCgqZaSCrvoYyhw5AHoeP3L%2BiPH1y%2BLAWktotbpTYnJ5AabjXoKjp44K09NV%2BDPFUBn1l1aH%2FAC3aZ%2F6KoCHcjgoEbtTKhVs9ns6gwXUKP5p8qsNXtFUMpIOwNMh2H%2FW74zwkvCMa9tZOmpaosQazohj4YwQ7zSjg7gng9ntk8XZCFGIJk3p6on4bpylsIpg%3D%3D"
-dd_s = "_dd_s=rum=0&expire=1600758020615"
+dd_s1 = "_dd_s=rum=0&expire=1600758020615"
+dd_s2 = "_dd_s=rum=0&expire=1600758030036"
+dd_s3 = "_dd_s=rum=0&expire=1600758111632"
+
 cioid = "_cioid=5d413254bdd9aa26f74486cc"
 stripe_mid = "__stripe_mid=90454907-556b-42dd-aee1-921ccb2d64aa6e73ab"
 stripe_sid = "__stripe_sid=1bb40d25-187b-458a-85a8-f875d1109d81e2dbcf"
 ajs_user_id = "ajs_user_id=%225d413254bdd9aa26f74486cc%22"
+cio = "_cio=de1a76aa-e470-92f6-f48c-15d3bac6792a"
+iter_id = "iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk"
+initial_referrer = "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+initial_referring_domain = (
+    "initial_referring_domain%22%3A%20%22%24direct%22%" + "2C%22%24"
+)
+distinct_id = "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+distinct_id2 = "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+mp_name_tag = "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
+productSolutionName = "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+user_id = "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
+email = "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
+first_name = "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
+name = "name%22%3A%20%22smrithi.mandhana.fc%22%7D"
 
 
 def get_login_braking_brand_logo():
@@ -39,8 +52,11 @@ def get_login_braking_brand_logo():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -60,8 +76,11 @@ def get_login_buffer_logo():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -81,19 +100,24 @@ def get_publish_bundle_6_css():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -153,12 +177,17 @@ def get_publish_0_js():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -168,17 +197,18 @@ def get_publish_0_js():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -198,12 +228,17 @@ def get_publish_composer_2_css():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -213,10 +248,18 @@ def get_publish_composer_2_css():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -236,12 +279,17 @@ def get_publish_composer_f_js():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -251,16 +299,18 @@ def get_publish_composer_f_js():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "device_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22"
+        + distinct_id
+        + device_id
         + "mp_lib%22%3A%20%22Segment%3A%20web%22%2C%22%24"
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -280,19 +330,24 @@ def get_buffer_icons():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -337,12 +392,17 @@ def post_publish_rpc_v1ToV2UpgradeDetails():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -352,12 +412,11 @@ def post_publish_rpc_v1ToV2UpgradeDetails():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -379,12 +438,17 @@ def post_publish_rpc_environment():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -394,12 +458,11 @@ def post_publish_rpc_environment():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -421,12 +484,17 @@ def post_publish_rpc_clientAccess():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -436,12 +504,11 @@ def post_publish_rpc_clientAccess():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -463,12 +530,17 @@ def post_publish_rpc_profiles():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -478,12 +550,11 @@ def post_publish_rpc_profiles():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -505,12 +576,17 @@ def post_publish_rpc_getGlobalOrganizationId():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -520,12 +596,11 @@ def post_publish_rpc_getGlobalOrganizationId():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -547,12 +622,17 @@ def post_publish_rpc_organizations():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -562,12 +642,11 @@ def post_publish_rpc_organizations():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -589,12 +668,17 @@ def post_publish_rpc_user():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -604,12 +688,11 @@ def post_publish_rpc_user():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -631,12 +714,17 @@ def post_publish_rpc_getCounts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -646,12 +734,11 @@ def post_publish_rpc_getCounts():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -673,12 +760,17 @@ def post_publish_rpc_getLinkShortener():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -688,12 +780,11 @@ def post_publish_rpc_getLinkShortener():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -715,12 +806,17 @@ def post_publish_rpc_getHashtagGroups():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -730,12 +826,11 @@ def post_publish_rpc_getHashtagGroups():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -757,12 +852,17 @@ def post_publish_rpc_checkRemindersStatus():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -772,12 +872,11 @@ def post_publish_rpc_checkRemindersStatus():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -799,12 +898,17 @@ def post_publish_rpc_globalAccount():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -814,12 +918,11 @@ def post_publish_rpc_globalAccount():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -841,12 +944,17 @@ def post_publish_rpc_queuedPosts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -856,12 +964,11 @@ def post_publish_rpc_queuedPosts():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -883,12 +990,17 @@ def post_publish_rpc_getStoryGroups():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -898,12 +1010,11 @@ def post_publish_rpc_getStoryGroups():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -925,12 +1036,17 @@ def post_publish_rpc_getStoryGroups():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -938,12 +1054,13 @@ def post_publish_rpc_getStoryGroups():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -965,12 +1082,17 @@ def post_publish_rpc_enabledApplicationModes():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -980,12 +1102,11 @@ def post_publish_rpc_enabledApplicationModes():
         + dd_s
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1007,12 +1128,17 @@ def post_publish_rpc_getLinkShortener():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1020,12 +1146,13 @@ def post_publish_rpc_getLinkShortener():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1047,12 +1174,17 @@ def post_publish_rpc_queuedPosts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1060,12 +1192,13 @@ def post_publish_rpc_queuedPosts():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1087,12 +1220,17 @@ def post_publish_rpc_getCounts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1100,12 +1238,13 @@ def post_publish_rpc_getCounts():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1127,12 +1266,17 @@ def post_publish_rpc_getHashtagGroups():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1140,12 +1284,13 @@ def post_publish_rpc_getHashtagGroups():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1167,12 +1312,17 @@ def post_publish_rpc_gridPosts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1180,12 +1330,13 @@ def post_publish_rpc_gridPosts():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
+        + initial_referrer
         + initial_referring_domain
-        + "; _dd_s=rum=0&expire=1600758030036",
+        + "; "
+        + dd_s2,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1207,12 +1358,17 @@ def post_publish_rpc_composerApiProxy3():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1222,22 +1378,22 @@ def post_publish_rpc_composerApiProxy3():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid
         + "; "
         + stripe_mid
         + "; "
-        + ""
         + stripe_sid
         + "; "
         + "_dd_s=rum=0&expire=1600758042012",
@@ -1262,12 +1418,17 @@ def post_publish_rpc_composerApiProxy2():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1277,18 +1438,26 @@ def post_publish_rpc_composerApiProxy2():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid
         + "; "
         + stripe_mid
         + "; "
-        + ""
         + stripe_sid
         + "; "
-        + "iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk; "
+        + iter_id
+        + "; "
         + "_dd_s=rum=0&expire=1600758085103",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -1311,12 +1480,17 @@ def post_publish_rpc_composerApiProxy():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1326,16 +1500,27 @@ def post_publish_rpc_composerApiProxy():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid
         + "; "
         + stripe_mid
         + "; "
         + stripe_sid
-        + "; iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk; _dd_s=rum=0&expire=1600758111632",
+        + "; "
+        + iter_id
+        + "; "
+        + dd_s3,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1357,12 +1542,17 @@ def post_publish_rpc_queuedPosts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1372,18 +1562,26 @@ def post_publish_rpc_queuedPosts():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid
         + "; "
         + stripe_mid
         + "; "
-        + ""
         + stripe_sid
         + "; "
-        + "iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk; "
+        + iter_id
+        + "; "
         + "_dd_s=rum=0&expire=1600758111632",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -1406,12 +1604,17 @@ def post_publish_rpc_gridPosts():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1421,19 +1624,27 @@ def post_publish_rpc_gridPosts():
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid
         + "; "
         + stripe_mid
         + "; "
-        + ""
         + stripe_sid
         + "; "
-        + "iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk; "
-        + "_dd_s=rum=0&expire=1600758111632",
+        + iter_id
+        + "; "
+        + dd_s3,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1452,12 +1663,17 @@ def get_static_buffer_avatar32():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
@@ -1465,12 +1681,11 @@ def get_static_buffer_avatar32():
         + bufferapp_ci_session
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
+        + distinct_id2
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + initial_referring_domain
-        + "",
+        + initial_referrer
+        + initial_referring_domain,
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1531,34 +1746,41 @@ def post_publish_pusher_auth4():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
         + "; "
         + bufferapp_ci_session
-        + "; _dd_s=rum=0&expire=1600758030036; "
-        + ""
+        + "; "
+        + dd_s2
+        + "; "
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24"
-        + "direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + "initial_referring_domain%22%3A%20%22%24direct%22%"
+        + "2C%22%24"
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -1583,32 +1805,40 @@ def post_publish_pusher_auth3():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
         + "; "
         + bufferapp_ci_session
-        + "; _dd_s=rum=0&expire=1600758030036; "
+        + "; "
+        + dd_s2
+        + "; "
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -1633,32 +1863,40 @@ def post_publish_pusher_auth2():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
         + "; "
         + bufferapp_ci_session
-        + "; _dd_s=rum=0&expire=1600758030036; "
+        + "; "
+        + dd_s2
+        + "; "
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -1681,32 +1919,40 @@ def post_publish_pusher_auth():
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
+        + "; "
         + buffer_marketing_str
+        + "; "
         + buffer_marketingsig_str
+        + "; "
         + buffer_signup_str
         + "; "
         + ajs_anonymous_id
-        + "; _cio=de1a76aa-e470-92f6-f48c-15d3bac6792a; "
+        + "; "
+        + cio
+        + "; "
         + fbp
         + "; "
         + buffer_session
         + "; "
         + bufferapp_ci_session
-        + "; _dd_s=rum=0&expire=1600758030036; "
+        + "; "
+        + dd_s2
+        + "; "
         + ajs_user_id
         + "; "
         + mp_90f7
-        + "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
+        + distinct_id
         + device_id
         + mp_lib
-        + "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-        + "initial_referring_domain%22%3A%20%22%24direct%22%2C%22%24"
-        + "user_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22"
-        + "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
-        + "productSolutionName%22%3A%20null%2C%22id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
-        + "email%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22%24"
-        + "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
-        + "name%22%3A%20%22smrithi.mandhana.fc%22%7D; "
+        + initial_referrer
+        + initial_referring_domain
+        + user_id
+        + mp_name_tag
+        + productSolutionName
+        + email
+        + first_name
+        + name
+        + "; "
         + cioid,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
