@@ -11,13 +11,14 @@ ajs_anonymous_id = "ajs_anonymous_id=%22be52f79b-f4dc-4c96-9615-a43ef4ac1600%22"
 mp_90f7 = "mp_90f73cfa0608e74231d66fdf4f31e120_mixpanel=%7B%22"
 device_id = "device_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22"
 mp_lib = "mp_lib%22%3A%20%22Segment%3A%20web%22%2C%22%24"
-initial_referring_domain = "initial_referring_domain%22%3A%20%22%24direct%22%" + "7D"
 fbp = "_fbp=fb.1.1600757110432.775138595"
 buffer_session = "buffer_session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiJ2MV81ZDQxMzI1NGJkZDlhYTI2Zjc0NDg2Y2NfMjkxZGRmYjgtOWJhZS00OTliLThlZmYtYmY0M2E3MjAyMTQ3Iiwic2Vzc2lvblZlcnNpb24iOiJ2MSIsImlhdCI6MTYwMDc1NzExNn0.nTUgi-aGm6R-r9XBfYI-H8LUPNn5z-DtkVc6SV39788"
 bufferapp_ci_session = "bufferapp_ci_session=b9I9s49vV2QX5x3xuwkYxI4il2d4pBD1NgIn9zdmKKz3BnBB%2Bu8UHcgT30FlOZ%2Fkz38JxjuFDWBmnelw10njM9Ct8iUNv9mXxDtwe1XK1Cnwv8z2BQNgFWLhoPMe1dVYbj4h3VlKXzVQkmVCK%2F34rTyT27oenXPBAEnAd1jV6XeSLCAB4uLYphpkcBqTvOEASSBUKh9Z%2BQ%2FRD5LZ9qAkFwYzeQFVha4iqhwCmbF6wmDBwYHCx6CMeLptrhP62vMZxa2WZ7TKEJ8CTrUN1x5R7baLfTkEDv8mT4k%2FdWX9KxAtMOY2C%2BrDhoWXnjJSGjwNTgFyRCxHYRtEFgH7IapclPgsstwWpk3WAhc06TIYpNT1eCHfC3RWDl4vsFqGvKa5vF7GJmU%2BkNfFqglEDxeopiGhooOoj%2BZzSY2VUcb4ex1tRvdZETGGkOix1eY4RFgpLDUhYaY8WxO%2BYvyubP6GSBNoqICAOCUJktBq2S7DGcJZ4x7j%2FSjICXqbI%2Be%2B%2Fc3mOnghGFek7AXlzckFEw4wwEJCgqZaSCrvoYyhw5AHoeP3L%2BiPH1y%2BLAWktotbpTYnJ5AabjXoKjp44K09NV%2BDPFUBn1l1aH%2FAC3aZ%2F6KoCHcjgoEbtTKhVs9ns6gwXUKP5p8qsNXtFUMpIOwNMh2H%2FW74zwkvCMa9tZOmpaosQazohj4YwQ7zSjg7gng9ntk8XZCFGIJk3p6on4bpylsIpg%3D%3D"
 dd_s1 = "_dd_s=rum=0&expire=1600758020615"
 dd_s2 = "_dd_s=rum=0&expire=1600758030036"
 dd_s3 = "_dd_s=rum=0&expire=1600758111632"
+dd_s4 = "_dd_s=rum=0&expire=1600758042012"
+dd_s5 = "_dd_s=rum=0&expire=1600758085103"
 
 cioid = "_cioid=5d413254bdd9aa26f74486cc"
 stripe_mid = "__stripe_mid=90454907-556b-42dd-aee1-921ccb2d64aa6e73ab"
@@ -26,9 +27,7 @@ ajs_user_id = "ajs_user_id=%225d413254bdd9aa26f74486cc%22"
 cio = "_cio=de1a76aa-e470-92f6-f48c-15d3bac6792a"
 iter_id = "iter_id=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhaWQiOiI1ZjY5OWRhNWRjNTUxODAwMDE5MDA5N2IiLCJjb21wYW55X2lkIjoiNWQ1ZjIxMzUxMzU5ZDMwMDAxMDE3N2IxIiwiaWF0IjoxNjAwNzU3MTU3fQ.kX6_RhnQua2Uunh6SzgfeQ5-nihQIgKzqSlFlkG5qwk"
 initial_referrer = "initial_referrer%22%3A%20%22%24direct%22%2C%22%24"
-initial_referring_domain = (
-    "initial_referring_domain%22%3A%20%22%24direct%22%" + "2C%22%24"
-)
+initial_referring_domain = "initial_referring_domain%22%3A%20%22%24"
 distinct_id = "distinct_id%22%3A%20%225d413254bdd9aa26f74486cc%22%2C%22%24"
 distinct_id2 = "distinct_id%22%3A%20%22174b48f13231b4-01237e4325629-623e0a70-fa000-174b48f132469d%22%2C%22%24"
 mp_name_tag = "mp_name_tag%22%3A%20%22mandhanasmrithi%40gmail.com%22%2C%22"
@@ -115,6 +114,7 @@ def get_publish_bundle_6_css():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + cio
         + "; "
@@ -202,6 +202,7 @@ def get_publish_0_js():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -253,6 +254,7 @@ def get_publish_composer_2_css():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -301,9 +303,10 @@ def get_publish_composer_f_js():
         + mp_90f7
         + distinct_id
         + device_id
-        + "mp_lib%22%3A%20%22Segment%3A%20web%22%2C%22%24"
+        + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -345,6 +348,7 @@ def get_buffer_icons():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + cio
         + "; "
@@ -416,7 +420,8 @@ def post_publish_rpc_v1ToV2UpgradeDetails():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -462,7 +467,8 @@ def post_publish_rpc_environment():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -508,7 +514,8 @@ def post_publish_rpc_clientAccess():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -554,7 +561,8 @@ def post_publish_rpc_profiles():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -600,7 +608,8 @@ def post_publish_rpc_getGlobalOrganizationId():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -646,7 +655,8 @@ def post_publish_rpc_organizations():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -692,7 +702,8 @@ def post_publish_rpc_user():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -738,7 +749,8 @@ def post_publish_rpc_getCounts():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -784,7 +796,8 @@ def post_publish_rpc_getLinkShortener():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -830,7 +843,8 @@ def post_publish_rpc_getHashtagGroups():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -876,7 +890,8 @@ def post_publish_rpc_checkRemindersStatus():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -922,7 +937,8 @@ def post_publish_rpc_globalAccount():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -968,7 +984,8 @@ def post_publish_rpc_queuedPosts():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1014,7 +1031,8 @@ def post_publish_rpc_getStoryGroups():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1059,6 +1077,7 @@ def post_publish_rpc_getStoryGroups():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1106,7 +1125,8 @@ def post_publish_rpc_enabledApplicationModes():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1151,6 +1171,7 @@ def post_publish_rpc_getLinkShortener():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1197,6 +1218,7 @@ def post_publish_rpc_queuedPosts():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1243,6 +1265,7 @@ def post_publish_rpc_getCounts():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1289,6 +1312,7 @@ def post_publish_rpc_getHashtagGroups():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1335,6 +1359,7 @@ def post_publish_rpc_gridPosts():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%7D"
         + "; "
         + dd_s2,
     }
@@ -1383,6 +1408,7 @@ def post_publish_rpc_composerApiProxy3():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1396,7 +1422,7 @@ def post_publish_rpc_composerApiProxy3():
         + "; "
         + stripe_sid
         + "; "
-        + "_dd_s=rum=0&expire=1600758042012",
+        + dd_s4,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1443,6 +1469,7 @@ def post_publish_rpc_composerApiProxy2():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1458,7 +1485,7 @@ def post_publish_rpc_composerApiProxy2():
         + "; "
         + iter_id
         + "; "
-        + "_dd_s=rum=0&expire=1600758085103",
+        + dd_s5,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1505,6 +1532,7 @@ def post_publish_rpc_composerApiProxy():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1567,6 +1595,7 @@ def post_publish_rpc_queuedPosts():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1582,7 +1611,7 @@ def post_publish_rpc_queuedPosts():
         + "; "
         + iter_id
         + "; "
-        + "_dd_s=rum=0&expire=1600758111632",
+        + dd_s3,
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1629,6 +1658,7 @@ def post_publish_rpc_gridPosts():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1685,7 +1715,8 @@ def get_static_buffer_avatar32():
         + device_id
         + mp_lib
         + initial_referrer
-        + initial_referring_domain,
+        + initial_referring_domain
+        + "direct%22%7D",
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
@@ -1772,8 +1803,8 @@ def post_publish_pusher_auth4():
         + device_id
         + mp_lib
         + initial_referrer
-        + "initial_referring_domain%22%3A%20%22%24direct%22%"
-        + "2C%22%24"
+        + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1832,6 +1863,7 @@ def post_publish_pusher_auth3():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1890,6 +1922,7 @@ def post_publish_pusher_auth2():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -1946,6 +1979,7 @@ def post_publish_pusher_auth():
         + mp_lib
         + initial_referrer
         + initial_referring_domain
+        + "direct%22%2C%22%24"
         + user_id
         + mp_name_tag
         + productSolutionName
@@ -2029,3 +2063,61 @@ def get_buffer_s3_upload_n1_n2_n3():
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
+
+
+# GET login page
+# GET breaking brand logo
+# GET buffer logo
+# GET favicon
+# POST login form
+# GET publish page
+# GET publish bundle css
+# GET buffer icon css
+# GET publish bundle js
+# GET publish vendor js
+# POST publish.buffer.com/rpc/v1ToV2UpgradeDetails (with blank data)
+# POST publish.buffer.com/rpc/environment (with blank data)
+# POST publish.buffer.com/rpc/clientAccess (with blank data)
+# POST publish.buffer.com/rpc/profiles (with "forAnalyze" data)
+# POST publish.buffer.com/rpc/getGlobalOrganizationId (with blank data)
+# POST publish.buffer.com/rpc/organizations (with blank data)
+# POST publish.buffer.com/rpc/user (with blank data)
+# POST publish.buffer.com/rpc/profiles (with "profileId" data)
+# POST publish.buffer.com/rpc/getLinkShortener (with "profileId" data)
+# POST publish.buffer.com/rpc/getHashtagGroups (with "organizationId" data)
+# POST publish.buffer.com/rpc/checkRemindersStatus (with blank data)
+# GET avatar32
+# POST publish.buffer.com/rpc/globalAccount (with blank data)
+# GET default avatar
+# POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore" data)
+# GET pusherapp/appid
+# POST publish.buffer.com/rpc/getStoryGroups details (with "profileId","isFetchingMore" data)
+# POST publish.buffer.com/rpc/getStoryGroups details (with "profileId","isFetchingMore" data)(duplicate?)
+# POST publish.buffer.com/rpc/enabledApplicationModes details (with "comprehensive" data)
+# POST publish.buffer.com/rpc/getLinkShortener details (with "profileId" data)
+# POST publish.buffer.com/rpc/queuedPosts details (with "profileId","isFetchingMore" data)
+# POST pusher auth (with "socket_id","channel_name" rawdata)
+# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
+# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
+# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
+# POST publish.buffer.com/rpc/getCounts details (with "profileId" data)
+# POST publish.buffer.com/rpc/getHashtagGroups details (with "organizationId" data)
+# GET drag-placeholder.png
+# POST publish.buffer.com/rpc/gridPosts details (with "profileId" data)
+# OPTIONS pusherapp
+# GET publish/0.74926ce6.js
+# GET publish/composer.20a28bcd.css
+# GET publish/composer.f1f1e798.js
+# GET buffer-media-uploads.s3.amazonaws.com/imageid
+# POST publish.buffer.com/rpc/composerApiProxy (with "url", "start_day", "end_day" data)
+# GET webfonts buffer-icons.woff
+# GET pusher stats with session and key as querry
+# GET favicon32x32
+# GET webmanifest
+# OPTIONS buffer-media-uploads.s3.amazonaws.com
+# POST buffer-media-uploads.s3.amazonaws.com(with BIIIG rawdata)
+# POST publish.buffer.com/rpc/composerApiProxy (with "url", "key", "csrf_token" data)
+# GET fastimage/image.jpg
+# POST publish.buffer.com/rpc/composerApiProxy (with "url", "now", "top", "shorten", "text", "fb_text", "entities", "profileIds", "scheduled_at", "attachment", "pinned" data)
+# POST publish.buffer.com/rpc/queuedPosts details (with "profileId","isFetchingMore","count" data)
+# GET buffer-media-uploads.s3.amazonaws.com/imageid
