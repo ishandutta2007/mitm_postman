@@ -44,14 +44,14 @@ class Postman:
             request_no=str(self.num_req).zfill(5) + "_before"
         )
         ctx.log.info("REQUEST NO: %d : %s" % (self.num_req, flow.request.host))
-        is_present = False
-        for exclude in self.excludes:
-            if exclude in flow.request.host:
-                return
-        for keyword in ctx.options.hostgroup_filter.split(","):
-            if keyword in flow.request.host:
-                is_present = True
-                break
+        # is_present = False
+        # for exclude in self.excludes:
+        #     if exclude in flow.request.host:
+        #         return
+        # for keyword in ctx.options.hostgroup_filter.split(","):
+        #     if keyword in flow.request.host:
+        #         is_present = True
+        #         break
         # if not is_present:
         return
         # ctx.log.info(
@@ -138,7 +138,7 @@ class Postman:
             if exclude in flow.request.host:
                 return
         for keyword in ctx.options.hostgroup_filter.split(","):
-            if keyword in flow.request.host:
+            if keyword == "*" or keyword in flow.request.host:
                 is_present = True
                 break
         if not is_present:
@@ -151,7 +151,10 @@ class Postman:
                 headers[k] = v
         content = flow.request.content
         if content:
-            content = content.decode("utf-8")
+            try:
+                content = content.decode("utf-8")
+            except Exception as e:
+                pass
         print(
             "{url} ({method})".format(
                 **{"url": flow.request.url, "method": flow.request.method}
