@@ -38,7 +38,7 @@ first_name = "first_name%22%3A%20%22smrithi.mandhana.fc%22%2C%22%24"
 name = "name%22%3A%20%22smrithi.mandhana.fc%22%7D"
 
 
-def get_login_braking_brand_logo():
+def get_login_breaking_brand_logo():
     url = "https://static.buffer.com/login/public/img/breaking-brand-logo.svg"
     payload = {}
     headers = {
