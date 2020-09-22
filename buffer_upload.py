@@ -709,9 +709,9 @@ def post_publish_rpc_user():
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_getCounts(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_getCounts(profile_id="5d60f84034f95b18092d9172", dds=dd_s):
     url = "https://publish.buffer.com/rpc/getCounts"
-    payload = "args=%7B%22profileId%22%3A%22" + profile_id2 + "%22%7D"
+    payload = "args=%7B%22profileId%22%3A%22" + profile_id + "%22%7D"
     headers = {
         "": "authority: publish.buffer.com",
         "content-length": "55",
@@ -721,7 +721,7 @@ def post_publish_rpc_getCounts(profile_id2="5d60f84034f95b18092d9172"):
         "content-type": "application/x-www-form-urlencoded",
         "origin": "https://publish.buffer.com",
         "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id2 + "/tab/queue",
+        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
@@ -742,7 +742,7 @@ def post_publish_rpc_getCounts(profile_id2="5d60f84034f95b18092d9172"):
         + "; "
         + bufferapp_ci_session
         + "; "
-        + dd_s
+        + dds
         + "; "
         + mp_90f7
         + distinct_id2
@@ -756,7 +756,7 @@ def post_publish_rpc_getCounts(profile_id2="5d60f84034f95b18092d9172"):
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_getLinkShortener(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_getLinkShortener(profile_id="5d60f84034f95b18092d9172", dds=dd_s):
     url = "https://publish.buffer.com/rpc/getLinkShortener"
     payload = "args=%7B%22profileId%22%3A%22" + profile_id2 + "%22%7D"
     headers = {
@@ -768,7 +768,7 @@ def post_publish_rpc_getLinkShortener(profile_id2="5d60f84034f95b18092d9172"):
         "content-type": "application/x-www-form-urlencoded",
         "origin": "https://publish.buffer.com",
         "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id2 + "/tab/queue",
+        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
@@ -789,7 +789,7 @@ def post_publish_rpc_getLinkShortener(profile_id2="5d60f84034f95b18092d9172"):
         + "; "
         + bufferapp_ci_session
         + "; "
-        + dd_s
+        + dds
         + "; "
         + mp_90f7
         + distinct_id2
@@ -803,7 +803,7 @@ def post_publish_rpc_getLinkShortener(profile_id2="5d60f84034f95b18092d9172"):
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_getHashtagGroups(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_getHashtagGroups(profile_id="5d60f84034f95b18092d9172", dds=dd_s):
     url = "https://publish.buffer.com/rpc/getHashtagGroups"
     payload = "args=%7B%22organizationId%22%3A%225d4132550ca715734f7d5936%22%7D"
     headers = {
@@ -815,7 +815,7 @@ def post_publish_rpc_getHashtagGroups(profile_id2="5d60f84034f95b18092d9172"):
         "content-type": "application/x-www-form-urlencoded",
         "origin": "https://publish.buffer.com",
         "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id2 + "/tab/queue",
+        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
@@ -836,7 +836,7 @@ def post_publish_rpc_getHashtagGroups(profile_id2="5d60f84034f95b18092d9172"):
         + "; "
         + bufferapp_ci_session
         + "; "
-        + dd_s
+        + dds
         + "; "
         + mp_90f7
         + distinct_id2
@@ -944,7 +944,7 @@ def post_publish_rpc_globalAccount(profile_id2="5d60f84034f95b18092d9172"):
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_queuedPosts(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_queuedPosts(profile_id="5d60f84034f95b18092d9172", dds=dd_s):
     url = "https://publish.buffer.com/rpc/queuedPosts"
     payload = (
         "args=%7B%22profileId%22%3A%22"
@@ -981,7 +981,7 @@ def post_publish_rpc_queuedPosts(profile_id2="5d60f84034f95b18092d9172"):
         + "; "
         + bufferapp_ci_session
         + "; "
-        + dd_s
+        + dds
         + "; "
         + mp_90f7
         + distinct_id2
@@ -995,62 +995,11 @@ def post_publish_rpc_queuedPosts(profile_id2="5d60f84034f95b18092d9172"):
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_getStoryGroups(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_getStoryGroups(profile_id="5d60f84034f95b18092d9172", dds=dd_s):
     url = "https://publish.buffer.com/rpc/getStoryGroups"
     payload = (
         "args=%7B%22profileId%22%3A%22"
         + profile_id2
-        + "%22%2C%22isFetchingMore%22%3Afalse%7D"
-    )
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "80",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id2 + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + dd_s
-        + "; "
-        + mp_90f7
-        + distinct_id2
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%7D",
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
-
-
-def post_publish_rpc_getStoryGroups(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/getStoryGroups"
-    payload = (
-        "args=%7B%22profileId%22%3A%"
-        + profile_id
         + "%22%2C%22isFetchingMore%22%3Afalse%7D"
     )
     headers = {
@@ -1083,18 +1032,70 @@ def post_publish_rpc_getStoryGroups(profile_id="5e3ce9067741b0698b6680e2"):
         + "; "
         + bufferapp_ci_session
         + "; "
+        + dds
+        + "; "
         + mp_90f7
         + distinct_id2
         + device_id
         + mp_lib
         + initial_referrer
         + initial_referring_domain
-        + "direct%22%7D"
-        + "; "
-        + dd_s2,
+        + "direct%22%7D",
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text.encode("utf8"))
+
+
+# DUPLICATE
+# def post_publish_rpc_getStoryGroups(profile_id="5e3ce9067741b0698b6680e2",dds=dd_s2):
+#     url = "https://publish.buffer.com/rpc/getStoryGroups"
+#     payload = (
+#         "args=%7B%22profileId%22%3A%"
+#         + profile_id
+#         + "%22%2C%22isFetchingMore%22%3Afalse%7D"
+#     )
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "80",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + mp_90f7
+#         + distinct_id2
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%7D"
+#         + "; "
+#         + dds,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
 
 
 def post_publish_rpc_enabledApplicationModes(profile_id2="5d60f84034f95b18092d9172"):
@@ -1144,196 +1145,198 @@ def post_publish_rpc_enabledApplicationModes(profile_id2="5d60f84034f95b18092d91
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_getLinkShortener(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/getLinkShortener"
-    payload = "args=%7B%22profileId%22%3A%22" + profile_id + "%22%7D"
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "55",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + mp_90f7
-        + distinct_id2
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%7D"
-        + "; "
-        + dd_s2,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
+# DUPLICATE
+# def post_publish_rpc_getLinkShortener(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2):
+#     url = "https://publish.buffer.com/rpc/getLinkShortener"
+#     payload = "args=%7B%22profileId%22%3A%22" + profile_id + "%22%7D"
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "55",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + mp_90f7
+#         + distinct_id2
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%7D"
+#         + "; "
+#         + dds,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
+
+# DUPLICATE
+# def post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2",dds=dd_s2):
+#     url = "https://publish.buffer.com/rpc/queuedPosts"
+#     payload = (
+#         "args=%7B%22profileId%22%3A%"
+#         + profile_id
+#         + "%22%2C%22isFetchingMore%22%3Afalse%2C%22count%22%3A300%7D"
+#     )
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "94",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + mp_90f7
+#         + distinct_id2
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%7D"
+#         + "; "
+#         + dd_s2,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
+
+# DUPLICATE
+# def post_publish_rpc_getCounts(profile_id="5e3ce9067741b0698b6680e2",dss=dd_s2):
+#     url = "https://publish.buffer.com/rpc/getCounts"
+#     payload = "args=%7B%22profileId%22%3A%22" + profile_id + "%22%7D"
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "55",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + mp_90f7
+#         + distinct_id2
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%7D"
+#         + "; "
+#         + dds,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/queuedPosts"
-    payload = (
-        "args=%7B%22profileId%22%3A%"
-        + profile_id
-        + "%22%2C%22isFetchingMore%22%3Afalse%2C%22count%22%3A300%7D"
-    )
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "94",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + mp_90f7
-        + distinct_id2
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%7D"
-        + "; "
-        + dd_s2,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
-
-
-def post_publish_rpc_getCounts(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/getCounts"
-    payload = "args=%7B%22profileId%22%3A%22" + profile_id + "%22%7D"
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "55",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + mp_90f7
-        + distinct_id2
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%7D"
-        + "; "
-        + dd_s2,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
-
-
-def post_publish_rpc_getHashtagGroups(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/getHashtagGroups"
-    payload = "args=%7B%22organizationId%22%3A%225d4132550ca715734f7d5936%22%7D"
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "60",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + mp_90f7
-        + distinct_id2
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%7D"
-        + "; "
-        + dd_s2,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
+# DUPLICATE
+# def post_publish_rpc_getHashtagGroups(profile_id="5e3ce9067741b0698b6680e2",dds=dd_s2):
+#     url = "https://publish.buffer.com/rpc/getHashtagGroups"
+#     payload = "args=%7B%22organizationId%22%3A%225d4132550ca715734f7d5936%22%7D"
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "60",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + mp_90f7
+#         + distinct_id2
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%7D"
+#         + "; "
+#         + dds,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
 
 
 def post_publish_rpc_gridPosts(profile_id="5e3ce9067741b0698b6680e2"):
@@ -1578,71 +1581,72 @@ def post_publish_rpc_composerApiProxy(profile_id="5e3ce9067741b0698b6680e2"):
     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/rpc/queuedPosts"
-    payload = (
-        "args=%7B%22profileId%22%3A%"
-        + profile_id
-        + "%22%2C%22isFetchingMore%22%3Afalse%2C%22hideLoading%22%3Atrue%2C%22count%22%3A300%7D"
-    )
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "115",
-        "accept": "application/json",
-        "user-agent": my_useragent,
-        "sec-fetch-mode": "cors",
-        "content-type": "application/x-www-form-urlencoded",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + ajs_user_id
-        + "; "
-        + mp_90f7
-        + distinct_id
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%2C%22%24"
-        + user_id
-        + mp_name_tag
-        + productSolutionName
-        + email
-        + first_name
-        + name
-        + "; "
-        + cioid
-        + "; "
-        + stripe_mid
-        + "; "
-        + stripe_sid
-        + "; "
-        + iter_id
-        + "; "
-        + dd_s3,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
+# DUPLICATE
+# def post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2",dds=dd_s3):
+#     url = "https://publish.buffer.com/rpc/queuedPosts"
+#     payload = (
+#         "args=%7B%22profileId%22%3A%"
+#         + profile_id
+#         + "%22%2C%22isFetchingMore%22%3Afalse%2C%22hideLoading%22%3Atrue%2C%22count%22%3A300%7D"
+#     )
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": "115",
+#         "accept": "application/json",
+#         "user-agent": my_useragent,
+#         "sec-fetch-mode": "cors",
+#         "content-type": "application/x-www-form-urlencoded",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + ajs_user_id
+#         + "; "
+#         + mp_90f7
+#         + distinct_id
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%2C%22%24"
+#         + user_id
+#         + mp_name_tag
+#         + productSolutionName
+#         + email
+#         + first_name
+#         + name
+#         + "; "
+#         + cioid
+#         + "; "
+#         + stripe_mid
+#         + "; "
+#         + stripe_sid
+#         + "; "
+#         + iter_id
+#         + "; "
+#         + dds,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
 
 
 def post_publish_rpc_gridPosts(profile_id="5e3ce9067741b0698b6680e2"):
@@ -2319,24 +2323,33 @@ post_publish_rpc_user()
 # POST publish.buffer.com/rpc/profiles (with "profileId" data)
 post_publish_rpc_profiles()
 # POST publish.buffer.com/rpc/getLinkShortener (with "profileId" data)
+post_publish_rpc_getLinkShortener(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/getHashtagGroups (with "organizationId" data)
+post_publish_rpc_getHashtagGroups(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/checkRemindersStatus (with blank data)
 # GET avatar32
 # POST publish.buffer.com/rpc/globalAccount (with blank data)
 # GET default avatar
 # POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore" data)
+post_publish_rpc_queuedPosts(profile_id="5d60f84034f95b18092d9172")
 # GET pusherapp/appid
 # POST publish.buffer.com/rpc/getStoryGroups details (with "profileId","isFetchingMore" data)
+post_publish_rpc_getStoryGroups(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/getStoryGroups details (with "profileId","isFetchingMore" data)(duplicate?)
+post_publish_rpc_getStoryGroups(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # POST publish.buffer.com/rpc/enabledApplicationModes details (with "comprehensive" data)
 # POST publish.buffer.com/rpc/getLinkShortener details (with "profileId" data)
-# POST publish.buffer.com/rpc/queuedPosts details (with "profileId","isFetchingMore" data)
+post_publish_rpc_getLinkShortener(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
+# POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore" data)
+post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # POST pusher auth (with "socket_id","channel_name" rawdata)
 # POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
 # POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
 # POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
 # POST publish.buffer.com/rpc/getCounts details (with "profileId" data)
+post_publish_rpc_getCounts(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/getHashtagGroups details (with "organizationId" data)
+post_publish_rpc_getHashtagGroups(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # GET drag-placeholder.png
 # POST publish.buffer.com/rpc/gridPosts details (with "profileId" data)
 # OPTIONS pusherapp
@@ -2354,5 +2367,6 @@ post_publish_rpc_profiles()
 # POST publish.buffer.com/rpc/composerApiProxy (with "url", "key", "csrf_token" data)
 # GET fastimage/image.jpg
 # POST publish.buffer.com/rpc/composerApiProxy (with "url", "now", "top", "shorten", "text", "fb_text", "entities", "profileIds", "scheduled_at", "attachment", "pinned" data)
-# POST publish.buffer.com/rpc/queuedPosts details (with "profileId","isFetchingMore","count" data)
+# POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore","count" data)
+post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s3)
 # GET buffer-media-uploads.s3.amazonaws.com/imageid
