@@ -1,4 +1,5 @@
 import requests
+import urllib
 
 my_encoding = "gzip, deflate, br"
 my_language = "en-GB,en-US;q=0.9,en;q=0.8"
@@ -1098,7 +1099,7 @@ def post_publish_rpc_getStoryGroups(profile_id="5d60f84034f95b18092d9172", dds=d
 #     print(response.text.encode("utf8"))
 
 
-def post_publish_rpc_enabledApplicationModes(profile_id2="5d60f84034f95b18092d9172"):
+def post_publish_rpc_enabledApplicationModes(profile_id="5d60f84034f95b18092d9172"):
     url = "https://publish.buffer.com/rpc/enabledApplicationModes"
     payload = "args=%7B%22comprehensive%22%3Atrue%7D"
     headers = {
@@ -1110,7 +1111,7 @@ def post_publish_rpc_enabledApplicationModes(profile_id2="5d60f84034f95b18092d91
         "content-type": "application/x-www-form-urlencoded",
         "origin": "https://publish.buffer.com",
         "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id2 + "/tab/queue",
+        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
         "accept-encoding": my_encoding,
         "accept-language": my_language,
         "cookie": cfduid_str
@@ -1388,11 +1389,19 @@ def post_publish_rpc_gridPosts(profile_id="5e3ce9067741b0698b6680e2"):
 
 def post_publish_rpc_composerApiProxy3(profile_id="5e3ce9067741b0698b6680e2"):
     url = "https://publish.buffer.com/rpc/composerApiProxy"
-    payload = (
-        "args=%7B%22url%22%3A%22/1/profiles/"
-        + profile_id
-        + "/schedules/slots.json%22%2C%22args%22%3A%7B%22start_day%22%3A%222020-09-01%22%2C%22end_day%22%3A%222020-09-30%22%7D%2C%22HTTPMethod%22%3A%22GET%22%7D"
-    )
+    decoded_payload_args = {
+        "url": "/1/profiles/" + profile_id + "/schedules/slots.json",
+        "args": {"start_day": "2020-09-01", "end_day": "2020-09-30"},
+        "HTTPMethod": "GET",
+    }
+    payload = "args=" + urllib.parse.urlencode(decoded_payload_args)
+
+    # payload = (
+    #     "args="
+    #     + "%7B%22url%22%3A%22/1/profiles/"
+    #     + profile_id
+    #     + "/schedules/slots.json%22%2C%22args%22%3A%7B%22start_day%22%3A%222020-09-01%22%2C%22end_day%22%3A%222020-09-30%22%7D%2C%22HTTPMethod%22%3A%22GET%22%7D"
+    # )
     headers = {
         "": "authority: publish.buffer.com",
         "content-length": "172",
@@ -2338,6 +2347,7 @@ post_publish_rpc_getStoryGroups(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/getStoryGroups details (with "profileId","isFetchingMore" data)(duplicate?)
 post_publish_rpc_getStoryGroups(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # POST publish.buffer.com/rpc/enabledApplicationModes details (with "comprehensive" data)
+post_publish_rpc_enabledApplicationModes(profile_id="5d60f84034f95b18092d9172")
 # POST publish.buffer.com/rpc/getLinkShortener details (with "profileId" data)
 post_publish_rpc_getLinkShortener(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore" data)
