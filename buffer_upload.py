@@ -1886,185 +1886,195 @@ def get_pusher_app_n1():
     print(response.text.encode("utf8"))
 
 
-def post_publish_pusher_auth4(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/pusher/auth"
-    payload = "socket_id=299572.710297&channel_name=private-updates-org-5ed4bdb81423dd88c39e8392"
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "81",
-        "sec-fetch-mode": "cors",
-        "user-agent": my_useragent,
-        "content-type": "application/x-www-form-urlencoded",
-        "accept": "*/*",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + dd_s2
-        + "; "
-        + ajs_user_id
-        + "; "
-        + mp_90f7
-        + distinct_id
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%2C%22%24"
-        + user_id
-        + mp_name_tag
-        + productSolutionName
-        + email
-        + first_name
-        + name
-        + "; "
-        + cioid,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
+# def post_publish_pusher_auth4(
+#     profile_id="5e3ce9067741b0698b6680e2",
+#     channel_name="private-updates-org-5ed4bdb81423dd88c39e8392",
+# ):
+#     url = "https://publish.buffer.com/pusher/auth"
+#     payload = "socket_id=299572.710297&channel_name=" + channel_name
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": len(payload),
+#         "sec-fetch-mode": "cors",
+#         "user-agent": my_useragent,
+#         "content-type": "application/x-www-form-urlencoded",
+#         "accept": "*/*",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + dd_s2
+#         + "; "
+#         + ajs_user_id
+#         + "; "
+#         + mp_90f7
+#         + distinct_id
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%2C%22%24"
+#         + user_id
+#         + mp_name_tag
+#         + productSolutionName
+#         + email
+#         + first_name
+#         + name
+#         + "; "
+#         + cioid,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
 
 
-def post_publish_pusher_auth3(
-    profile_id="5e3ce9067741b0698b6680e2", profile_id2="5d60f84034f95b18092d9172"
+# def post_publish_pusher_auth3(
+#     profile_id="5e3ce9067741b0698b6680e2",
+#     channel_name="private-updates-5d60f84034f95b18092d9172",
+# ):
+#     url = "https://publish.buffer.com/pusher/auth"
+#     payload = "socket_id=299572.710297&channel_name=" + channel_name
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": len(payload),
+#         "sec-fetch-mode": "cors",
+#         "user-agent": my_useragent,
+#         "content-type": "application/x-www-form-urlencoded",
+#         "accept": "*/*",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + dd_s2
+#         + "; "
+#         + ajs_user_id
+#         + "; "
+#         + mp_90f7
+#         + distinct_id
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%2C%22%24"
+#         + user_id
+#         + mp_name_tag
+#         + productSolutionName
+#         + email
+#         + first_name
+#         + name
+#         + "; "
+#         + cioid,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
+
+
+# def post_publish_pusher_auth2(
+#     profile_id="5e3ce9067741b0698b6680e2",
+#     channel_name="private-updates-5e3ce9067741b0698b6680e2",
+# ):
+#     url = "https://publish.buffer.com/pusher/auth"
+#     payload = "socket_id=299572.710297&channel_name=" + channel_name
+#     headers = {
+#         "": "authority: publish.buffer.com",
+#         "content-length": len(payload),
+#         "sec-fetch-mode": "cors",
+#         "user-agent": my_useragent,
+#         "content-type": "application/x-www-form-urlencoded",
+#         "accept": "*/*",
+#         "origin": "https://publish.buffer.com",
+#         "sec-fetch-site": "same-origin",
+#         "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
+#         "accept-encoding": my_encoding,
+#         "accept-language": my_language,
+#         "cookie": cfduid_str
+#         + "; "
+#         + buffer_marketing_str
+#         + "; "
+#         + buffer_marketingsig_str
+#         + "; "
+#         + buffer_signup_str
+#         + "; "
+#         + ajs_anonymous_id
+#         + "; "
+#         + cio
+#         + "; "
+#         + fbp
+#         + "; "
+#         + buffer_session
+#         + "; "
+#         + bufferapp_ci_session
+#         + "; "
+#         + dd_s2
+#         + "; "
+#         + ajs_user_id
+#         + "; "
+#         + mp_90f7
+#         + distinct_id
+#         + device_id
+#         + mp_lib
+#         + initial_referrer
+#         + initial_referring_domain
+#         + "direct%22%2C%22%24"
+#         + user_id
+#         + mp_name_tag
+#         + productSolutionName
+#         + email
+#         + first_name
+#         + name
+#         + "; "
+#         + cioid,
+#     }
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#     print(response.text.encode("utf8"))
+
+
+def post_publish_pusher_auth(
+    profile_id="5e3ce9067741b0698b6680e2",
+    channel_name="private-story-groups-5e3ce9067741b0698b6680e2",
 ):
     url = "https://publish.buffer.com/pusher/auth"
-    payload = "socket_id=299572.710297&channel_name=private-updates-" + profile_id2
+    payload = "socket_id=299572.710297&channel_name=" + channel_name
     headers = {
         "": "authority: publish.buffer.com",
-        "content-length": "77",
-        "sec-fetch-mode": "cors",
-        "user-agent": my_useragent,
-        "content-type": "application/x-www-form-urlencoded",
-        "accept": "*/*",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + dd_s2
-        + "; "
-        + ajs_user_id
-        + "; "
-        + mp_90f7
-        + distinct_id
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%2C%22%24"
-        + user_id
-        + mp_name_tag
-        + productSolutionName
-        + email
-        + first_name
-        + name
-        + "; "
-        + cioid,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
-
-
-def post_publish_pusher_auth2(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/pusher/auth"
-    payload = "socket_id=299572.710297&channel_name=private-updates-" + profile_id
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "77",
-        "sec-fetch-mode": "cors",
-        "user-agent": my_useragent,
-        "content-type": "application/x-www-form-urlencoded",
-        "accept": "*/*",
-        "origin": "https://publish.buffer.com",
-        "sec-fetch-site": "same-origin",
-        "referer": "https://publish.buffer.com/profile/" + profile_id + "/tab/queue",
-        "accept-encoding": my_encoding,
-        "accept-language": my_language,
-        "cookie": cfduid_str
-        + "; "
-        + buffer_marketing_str
-        + "; "
-        + buffer_marketingsig_str
-        + "; "
-        + buffer_signup_str
-        + "; "
-        + ajs_anonymous_id
-        + "; "
-        + cio
-        + "; "
-        + fbp
-        + "; "
-        + buffer_session
-        + "; "
-        + bufferapp_ci_session
-        + "; "
-        + dd_s2
-        + "; "
-        + ajs_user_id
-        + "; "
-        + mp_90f7
-        + distinct_id
-        + device_id
-        + mp_lib
-        + initial_referrer
-        + initial_referring_domain
-        + "direct%22%2C%22%24"
-        + user_id
-        + mp_name_tag
-        + productSolutionName
-        + email
-        + first_name
-        + name
-        + "; "
-        + cioid,
-    }
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text.encode("utf8"))
-
-
-def post_publish_pusher_auth(profile_id="5e3ce9067741b0698b6680e2"):
-    url = "https://publish.buffer.com/pusher/auth"
-    payload = "socket_id=299572.710297&channel_name=private-story-groups-" + profile_id
-    headers = {
-        "": "authority: publish.buffer.com",
-        "content-length": "82",
+        "content-length": len(payload),
         "sec-fetch-mode": "cors",
         "user-agent": my_useragent,
         "content-type": "application/x-www-form-urlencoded",
@@ -2372,14 +2382,14 @@ def post_s3_uppad(
 
 
 def get_fastimage(
-    user_id="5d4132550ca715734f7d5935",
+    aws_user_id="5d4132550ca715734f7d5935",
     key="32255101f2279998fa189dbc78b073f8",
     profile_id="5e3ce9067741b0698b6680e2",
     aws_original_filename="28517b70d3c8fcb81d582b331d3f94ba.original.jpg",
 ):
     url = (
         "https://fastimage.buffer.com/dimensions?user_id="
-        + user_id
+        + aws_user_id
         + "&key="
         + key
         + "&url=https%3A%2F%2Fbuffer-media-uploads.s3.amazonaws.com%2F"
@@ -2470,9 +2480,25 @@ post_publish_rpc_getLinkShortener(profile_id="5e3ce9067741b0698b6680e2", dds=dd_
 # POST publish.buffer.com/rpc/queuedPosts (with "profileId","isFetchingMore" data)
 post_publish_rpc_queuedPosts(profile_id="5e3ce9067741b0698b6680e2", dds=dd_s2)
 # POST pusher auth (with "socket_id","channel_name" rawdata)
-# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
-# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
-# POST pusher auth (with "socket_id","channel_name" rawdata)(duplicate?)
+post_publish_pusher_auth(
+    profile_id="5e3ce9067741b0698b6680e2",
+    channel_name="private-updates-org-5ed4bdb81423dd88c39e8392",
+)
+# POST pusher auth (with "socket_id","channel_name" rawdata)
+post_publish_pusher_auth(
+    profile_id="5e3ce9067741b0698b6680e2",
+    channel_name="private-updates-5d60f84034f95b18092d9172",
+)
+# POST pusher auth (with "socket_id","channel_name" rawdata)
+post_publish_pusher_auth(
+    profile_id="5e3ce9067741b0698b6680e2",
+    channel_name="private-updates-5e3ce9067741b0698b6680e2",
+)
+# POST pusher auth (with "socket_id","channel_name" rawdata)
+post_publish_pusher_auth(
+    profile_id="5e3ce9067741b0698b6680e2",
+    channel_name="private-story-groups-5e3ce9067741b0698b6680e2",
+)
 # POST publish.buffer.com/rpc/getCounts details (with "profileId" data)
 post_publish_rpc_getCounts(profile_id="5d60f84034f95b18092d9172", dds=dd_s)
 # POST publish.buffer.com/rpc/getHashtagGroups details (with "organizationId" data)
@@ -2518,7 +2544,7 @@ post_publish_rpc_composerApiProxy2(
 )
 # GET fastimage/image.jpg
 get_fastimage(
-    user_id="5d4132550ca715734f7d5935",
+    aws_user_id="5d4132550ca715734f7d5935",
     key="32255101f2279998fa189dbc78b073f8",
     profile_id="5e3ce9067741b0698b6680e2",
     aws_original_filename="28517b70d3c8fcb81d582b331d3f94ba.original.jpg",
